@@ -1,0 +1,46 @@
+/* PPI — Base / reset.
+ * Minimal, opt-in body defaults that match the brand surfaces.
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6, p { margin: 0; }
+
+img, svg { display: block; max-width: 100%; }
+
+button { font: inherit; }
+
+a { color: var(--blue); text-underline-offset: 2px; }
+
+/* Common utility classes used throughout the system */
+
+.eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-extrabold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  opacity: 0.72;
+  color: inherit;
+  margin: 0;
+}
+
+.muted { color: var(--muted); }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-color: var(--blue);
+}

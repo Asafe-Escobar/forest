@@ -1,0 +1,24 @@
+/* PPI — Spacing
+ * 8-base with precision steps at 4, 6, 7, 14, 28, 42.
+ */
+
+:root {
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-sm-plus: 14px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 28px;
+  --space-3xl: 42px;
+
+  /* Fixed control sizes */
+  --control-h: 42px;        /* inputs, buttons, icon buttons */
+  --icon-btn-size: 42px;
+
+  /* Layout */
+  --layout-pad-x: clamp(16px, 4vw, 42px);
+  --layout-gap: 20px;
+  --intake-col: minmax(300px, 390px); /* @kind spacing */
+}

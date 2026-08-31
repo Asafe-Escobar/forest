@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/ppi-design-system-6e2186db-5224-44ae-a946-63e30a968de4/tokens/fonts.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Montserrat:wght@400;600&family=Antic+Didone&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_ds/ppi-design-system-6e2186db-5224-44ae-a946-63e30a968de4/styles.css">
+  <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    @keyframes selecionar {
+      0%   { background-position: 0; }
+      20%  { background-position: -100%; }
+      100% { background-position: -100%; }
+    }
+    .selecionado {
+      background: linear-gradient(to right, transparent 50%, #006633 50%);
+      background-size: 200%;
+      background-position: 0;
+      transition: background-position 1.5s;
+      animation: selecionar 10s infinite;
+      padding: 0 .12em;
+    }
+    .lp-grow { transition: transform .3s ease; }
+    .lp-grow:hover { transform: scale(1.06); }
+  </style>
+</helmet>
+<section data-screen-label="Hero" style="position:relative;overflow:hidden;background:#001A0D;padding:clamp(96px,14vw,150px) 0 50px;display:flex;flex-direction:column;align-items:center;min-height:min(750px,90vh);font-family:Inter,sans-serif;">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <div class="lp-slide" data-i="0" style="position:absolute;inset:0;opacity:1;transition:opacity 1.2s ease;">
+      <image-slot id="hero-bg-1" shape="rect" src="uploads/IMG_4507.JPG.jpeg" placeholder="Foto de fundo 1"></image-slot>
+    </div>
+    <div class="lp-slide" data-i="1" style="position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;">
+      <image-slot id="hero-bg-2" shape="rect" src="uploads/IMG_4508.JPG.jpeg" placeholder="Foto de fundo 2"></image-slot>
+    </div>
+    <div class="lp-slide" data-i="2" style="position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;">
+      <image-slot id="hero-bg-3" shape="rect" src="uploads/IMG_4509.JPG.jpeg" placeholder="Foto de fundo 3"></image-slot>
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,26,13,.55) 0%, rgba(0,26,13,.62) 55%, #001A0D 100%);pointer-events:none;"></div>
+  </div>
+  <div style="position:relative;z-index:1;width:90%;max-width:1140px;display:flex;flex-direction:column;align-items:center;text-align:center;">
+    <h1 style="color:#fff;font-size:clamp(24px,4vw,34px);font-weight:600;line-height:1.4;max-width:560px;margin:0;">
+      <span class="selecionado">Lorem Ipsum Lorem Ipsum Lorem Ipsum!</span>
+    </h1>
+    <p style="color:#fff;font-size:clamp(15px,2.2vw,18px);font-weight:300;line-height:1.5;max-width:560px;margin:10px 0;">
+      Soluções especializadas para quem deseja regularizar, certificar e valorizar seu imóvel com tecnologia de ponta.
+    </p>
+    <p style="color:#fff;font-size:clamp(14px,2vw,18px);font-weight:300;line-height:1.5;letter-spacing:.1px;max-width:720px;margin:0;">
+      Atendimento especializado &nbsp;|&nbsp; Tecnologia de ponta &nbsp;|&nbsp; Profissionais qualificados
+    </p>
+    <a href="#" class="lp-grow" style="display:inline-flex;align-items:center;gap:14px;background:#006633;color:#fff;font-size:clamp(15px,2vw,18px);font-weight:400;padding:16px 28px;border-radius:8px;text-decoration:none;margin-top:20px;">
+      Fale agora no WhatsApp!
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.93.96-3.48-.22-.36a9.42 9.42 0 0 1 14.62-11.6 9.36 9.36 0 0 1 2.76 6.67 9.43 9.43 0 0 1-9.4 9.36zM20.13 3.8A11.36 11.36 0 0 0 12.05.5 11.4 11.4 0 0 0 2.14 17.6L.5 23.5l6.05-1.58a11.36 11.36 0 0 0 5.49 1.4h.01a11.4 11.4 0 0 0 8.08-19.52z"/></svg>
+    </a>
+    <div style="width:100%;background:#fff;border-radius:8px;box-shadow:8px 10px 46px rgba(0,0,0,.12);padding:clamp(20px,3vw,30px);margin:30px 0 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+        <i data-lucide="building-2" style="width:34px;height:34px;color:#006633;"></i>
+        <div style="color:#006633;font-size:clamp(15px,1.6vw,17px);font-weight:600;line-height:1.3;">Mais de 2 anos de experiência</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+        <i data-lucide="hard-hat" style="width:34px;height:34px;color:#006633;"></i>
+        <div style="color:#006633;font-size:clamp(15px,1.6vw,17px);font-weight:600;line-height:1.3;">Equipe Especializada de Profissionais</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+        <i data-lucide="star" style="width:34px;height:34px;color:#006633;"></i>
+        <div style="color:#006633;font-size:clamp(15px,1.6vw,17px);font-weight:600;line-height:1.3;">+100 Clientes<br>Satisfeitos</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+        <i data-lucide="target" style="width:34px;height:34px;color:#006633;"></i>
+        <div style="color:#006633;font-size:clamp(15px,1.6vw,17px);font-weight:600;line-height:1.3;">Soluções eficazes e<br>Atuação Estratégica</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section data-screen-label="Conheça o empreendimento" style="background:#001A0D;padding:clamp(34px,4.5vw,56px) 0;font-family:'Montserrat',sans-serif;">
+  <div style="width:90%;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;">
+    <h2 style="font-family:'Antic Didone',serif;color:#fff;font-size:clamp(28px,4.5vw,40px);font-weight:600;line-height:1.3;text-align:center;margin:0;">Lorem Ipsum</h2>
+    <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.55);margin:14px 0 24px;">
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+      <i data-lucide="star" style="width:16px;height:16px;fill:currentColor;stroke:none;"></i>
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:28px;">
+      <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="3">
+        <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.title }}</button>
+      </sc-for>
+    </div>
+    <div style="width:100%;max-width:760px;aspect-ratio:16/9;background:#E2D4C9;border-radius:18px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;overflow:hidden;">
+      <sc-if value="{{ show0 }}" hint-placeholder-val="{{ true }}">
+        <div style="width:100%;aspect-ratio:16/9;overflow:hidden;">
+          <iframe src="https://player.vimeo.com/video/1221471103?autoplay=1&loop=1&muted=1&autopause=0&title=0&byline=0&portrait=0" title="Conheça por dentro" style="width:100%;height:100%;border:0;display:block;" allow="autoplay;fullscreen;picture-in-picture"></iframe>
+        </div>
+      </sc-if>
+      <sc-if value="{{ show1 }}" hint-placeholder-val="{{ false }}">
+        <div style="width:100%;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px;box-sizing:border-box;">
+          <img src="https://lp.oreidalanding.com.br/wp-content/uploads/2025/04/Group-22.png" alt="Módulo 1" style="width:100%;flex:0 0 100%;scroll-snap-align:center;border-radius:12px;object-fit:contain;">
+          <img src="https://lp.oreidalanding.com.br/wp-content/uploads/2025/04/Group-22-1.png" alt="Módulo 2" style="width:100%;flex:0 0 100%;scroll-snap-align:center;border-radius:12px;object-fit:contain;">
+          <img src="https://lp.oreidalanding.com.br/wp-content/uploads/2025/04/Group-22-2.png" alt="Módulo 3" style="width:100%;flex:0 0 100%;scroll-snap-align:center;border-radius:12px;object-fit:contain;">
+        </div>
+      </sc-if>
+      <sc-if value="{{ show2 }}" hint-placeholder-val="{{ false }}">
+        <div style="width:100%;align-self:stretch;display:grid;grid-template-columns:1fr 1fr;gap:0;">
+          <img src="uploads/WhatsApp Image 2026-08-26 at 10.44.05.jpeg" alt="Salão de jogos" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="uploads/WhatsApp Image 2026-08-26 at 10.44.06.jpeg" alt="Planta do loteamento" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+      </sc-if>
+      <sc-if value="{{ show3 }}" hint-placeholder-val="{{ false }}">
+        <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px 32px;padding:clamp(16px,3vw,28px);box-sizing:border-box;">
+          <div style="display:flex;align-items:center;gap:14px;"><i data-lucide="building-2" style="width:32px;height:32px;color:#4B3325;stroke-width:1.5;flex:none;"></i><span style="color:#4B3325;font-size:clamp(16px,1.8vw,19px);font-weight:600;">Lorem Imspum</span></div>
+          <div style="display:flex;align-items:center;gap:14px;"><i data-lucide="bed" style="width:32px;height:32px;color:#4B3325;stroke-width:1.5;flex:none;"></i><span style="color:#4B3325;font-size:clamp(16px,1.8vw,19px);font-weight:600;">Lorem Imspum</span></div>
+          <div style="display:flex;align-items:center;gap:14px;"><i data-lucide="door-open" style="width:32px;height:32px;color:#4B3325;stroke-width:1.5;flex:none;"></i><span style="color:#4B3325;font-size:clamp(16px,1.8vw,19px);font-weight:600;">Lorem Imspum</span></div>
+          <div style="display:flex;align-items:center;gap:14px;"><i data-lucide="car-front" style="width:32px;height:32px;color:#4B3325;stroke-width:1.5;flex:none;"></i><span style="color:#4B3325;font-size:clamp(16px,1.8vw,19px);font-weight:600;">Lorem Imspum</span></div>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.55);margin-top:40px;">
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+      <i data-lucide="star" style="width:16px;height:16px;fill:currentColor;stroke:none;"></i>
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+    </div>
+  </div>
+</section>
+<section data-screen-label="Comparativo" style="background:#001A0D;padding:clamp(34px,4.5vw,56px) 0;font-family:'Montserrat',sans-serif;">
+  <div style="width:90%;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;">
+    <h2 style="font-family:'Antic Didone',serif;color:#fff;font-size:clamp(26px,4vw,38px);font-weight:600;line-height:1.3;text-align:center;max-width:560px;margin:0;">Why do we use it?</h2>
+    <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.55);margin:14px 0 26px;">
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+      <i data-lucide="star" style="width:16px;height:16px;fill:currentColor;stroke:none;"></i>
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+    </div>
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:start;">
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.38);border-radius:12px;padding:clamp(28px,3vw,44px);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
+        <h3 style="font-family:'Sora',sans-serif;color:#FF4747;font-size:clamp(22px,2.4vw,26px);font-weight:700;text-transform:uppercase;letter-spacing:-.6px;text-align:center;margin:0;">Outros loteamentos</h3>
+        <div style="height:1px;background:rgba(255,255,255,.22);margin:22px 0;"></div>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;">
+          <sc-for list="{{ cons }}" as="item" hint-placeholder-count="9">
+            <li style="display:flex;align-items:flex-start;gap:9px;color:#fff;font-size:16px;font-weight:500;line-height:1.4;">
+              <i data-lucide="circle-minus" style="width:20px;height:20px;color:#D32020;flex:none;margin-top:1px;"></i>
+              <span>{{ item }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:clamp(28px,3vw,44px);">
+        <h3 style="font-family:'Sora',sans-serif;color:#12A417;font-size:clamp(22px,2.4vw,26px);font-weight:700;text-transform:uppercase;letter-spacing:-.6px;text-align:center;margin:0;">Nosso loteamento</h3>
+        <div style="height:1px;background:rgba(0,0,0,.14);margin:22px 0;"></div>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;">
+          <sc-for list="{{ pros }}" as="item" hint-placeholder-count="10">
+            <li style="display:flex;align-items:flex-start;gap:9px;color:#000;font-size:16px;font-weight:600;line-height:1.4;">
+              <i data-lucide="circle-check" style="width:20px;height:20px;color:#20D324;flex:none;margin-top:1px;"></i>
+              <span>{{ item }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+    <a href="#" class="lp-grow" style="margin-top:34px;display:inline-flex;align-items:center;justify-content:center;background:#006633;color:#fff;font-family:'Sora',sans-serif;font-size:clamp(15px,1.8vw,18px);font-weight:600;text-transform:uppercase;letter-spacing:.3px;padding:18px clamp(36px,6vw,70px);border-radius:7px;text-decoration:none;">Quero aprender agora</a>
+  </div>
+</section>
+<section data-screen-label="O local" style="background:#001A0D;padding:clamp(34px,4.5vw,56px) 0 0;font-family:'Montserrat',sans-serif;">
+  <div style="width:90%;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;">
+    <h2 style="font-family:'Antic Didone',serif;color:#fff;font-size:clamp(26px,4vw,38px);font-weight:600;line-height:1.3;text-align:center;margin:0;">O local</h2>
+    <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.55);margin:14px 0 24px;">
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+      <i data-lucide="star" style="width:16px;height:16px;fill:currentColor;stroke:none;"></i>
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+    </div>
+    <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;">
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+        <div class="lp-gallery-slide" data-i="{{ g.i }}" style="{{ g.style }}">
+          <image-slot id="{{ g.slot }}" shape="rect" src="{{ g.src }}" placeholder="Foto do local"></image-slot>
+        </div>
+      </sc-for>
+      <button onClick="{{ galleryPrev }}" aria-label="Anterior" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border:none;border-radius:999px;background:rgba(0,26,13,.55);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <i data-lucide="chevron-left" style="width:22px;height:22px;"></i>
+      </button>
+      <button onClick="{{ galleryNext }}" aria-label="Próxima" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border:none;border-radius:999px;background:rgba(0,26,13,.55);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <i data-lucide="chevron-right" style="width:22px;height:22px;"></i>
+      </button>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:18px;">
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+        <button class="lp-gallery-dot" data-i="{{ g.i }}" onClick="{{ g.go }}" aria-label="Ir para foto" style="width:9px;height:9px;padding:0;border:none;border-radius:999px;cursor:pointer;background:rgba(255,255,255,.3);transition:background .2s ease;"></button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<section data-screen-label="Feedbacks" style="background:#001A0D;padding:clamp(34px,4.5vw,56px) 0;font-family:'Montserrat',sans-serif;">
+  <div style="width:90%;max-width:1140px;margin:0 auto;display:flex;flex-direction:column;align-items:center;">
+    <h2 style="font-family:'Antic Didone',serif;color:#fff;font-size:clamp(26px,4vw,38px);font-weight:600;line-height:1.3;text-align:center;max-width:640px;margin:0;">Feedbacks de quem usa nosso serviço:</h2>
+    <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.55);margin:14px 0 26px;">
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+      <i data-lucide="star" style="width:16px;height:16px;fill:currentColor;stroke:none;"></i>
+      <span style="width:34px;height:1px;background:rgba(255,255,255,.35);"></span>
+    </div>
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;">
+      <sc-for list="{{ feedbacks }}" as="fb" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="position:relative;background:#006633;color:#fff;border-radius:10px;padding:clamp(22px,2.4vw,32px);font-size:15px;font-weight:300;line-height:1.6;">
+            {{ fb.content }}
+            <span style="position:absolute;left:34px;bottom:-9px;width:18px;height:18px;background:#006633;transform:rotate(45deg);"></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:11px;padding-left:8px;">
+            <div style="width:48px;height:48px;border-radius:8px;overflow:hidden;flex:none;background:rgba(255,255,255,.12);">
+              <image-slot id="{{ fb.slot }}" shape="rect" placeholder="Foto"></image-slot>
+            </div>
+            <div style="display:flex;flex-direction:column;">
+              <span style="color:#fff;font-size:16px;font-weight:600;">{{ fb.name }}</span>
+              <span style="color:rgba(255,255,255,.6);font-size:14px;font-weight:400;">{{ fb.role }}</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<section data-screen-label="Urgência" style="background:#00160c;padding:clamp(32px,4vw,44px) 0;font-family:'Montserrat',sans-serif;">
+  <div style="width:90%;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+    <div style="display:flex;align-items:center;gap:14px;justify-content:center;text-align:left;">
+      <i data-lucide="clock" style="width:32px;height:32px;color:#E5A430;flex:none;"></i>
+      <div><div style="color:#fff;font-size:16px;font-weight:700;">Poucas unidades disponíveis!</div><div style="color:rgba(255,255,255,.7);font-size:14px;font-weight:300;">Garanta já o seu terreno.</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;justify-content:center;text-align:left;">
+      <i data-lucide="users" style="width:32px;height:32px;color:#E5A430;flex:none;"></i>
+      <div><div style="color:#fff;font-size:16px;font-weight:700;">Junte-se a quem já escolheu</div><div style="color:rgba(255,255,255,.7);font-size:14px;font-weight:300;">viver bem todos os dias.</div></div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 0 };
+  renderVals() {
+    const active = this.state.active;
+    const titles = ['Conheça por dentro', 'Módulos', 'Fotos', 'Beneficios'];
+    const base = {
+      fontFamily: "'Montserrat',sans-serif", fontSize: 'clamp(13px,1.6vw,15px)', fontWeight: 400,
+      padding: 'clamp(11px,1.6vw,14px) clamp(18px,2.4vw,26px)', borderRadius: '44px', border: 'none', cursor: 'pointer',
+      transition: 'background-color .15s ease, color .15s ease'
+    };
+    const tabs = titles.map((title, i) => ({
+      title,
+      onClick: () => this.setState({ active: i }),
+      style: { ...base, background: i === active ? '#A47154' : '#FFFFFF', color: i === active ? '#FFFFFF' : '#4B3325' }
+    }));
+    const quote = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.';
+    const feedbacks = [
+      { content: quote, name: 'John Doe', role: 'CEO', slot: 'feedback-1' },
+      { content: quote, name: 'John Doe', role: 'CEO', slot: 'feedback-2' },
+      { content: quote, name: 'John Doe', role: 'CEO', slot: 'feedback-3' }
+    ];
+    const srcs = [
+      'uploads/IMG_4507.JPG.jpeg',
+      'uploads/WhatsApp Image 2026-08-26 at 10.44.06 (1).jpeg',
+      'uploads/IMG_4509.JPG.jpeg',
+      'uploads/WhatsApp Image 2026-08-26 at 10.44.05.jpeg'
+    ];
+    const gallery = srcs.map((src, i) => ({
+      i, src, slot: 'local-' + (i + 1),
+      go: () => this.goGallery(i),
+      style: { position: 'absolute', inset: 0, opacity: i === 0 ? 1 : 0, transition: 'opacity 1s ease' }
+    }));
+    const vantagens = [
+      { icon: 'leaf', title: 'Qualidade de vida', desc: 'Para você e sua família.' },
+      { icon: 'heart', title: 'Lazer e bem-estar', desc: 'Com muita tranquilidade.' },
+      { icon: 'home', title: 'Realize o sonho', desc: 'Da casa própria.' }
+    ];
+    const cons = [
+      'Localização distante dos centros urbanos',
+      'Sem área de lazer ou natureza integrada',
+      'Entrada à vista, sem parcelamento',
+      'Sem portaria e segurança limitada',
+      'Infraestrutura incompleta ou em obras',
+      'Baixo potencial de valorização',
+      'Documentação demorada e burocrática',
+      'Ruas sem pavimentação',
+      'Atendimento sem acompanhamento'
+    ];
+    const pros = [
+      'Localização privilegiada em Cotia · SP, ao lado do CT do São Paulo',
+      'Lago privativo e áreas verdes exclusivas',
+      'Entrada parcelada que cabe no seu bolso',
+      'Loteamento fechado com segurança',
+      'Infraestrutura completa e pronta para uso',
+      'Alto potencial de valorização',
+      'Documentação regularizada e transparente',
+      'Ruas pavimentadas e arborizadas',
+      'Centro comercial a poucos passos de você',
+      'Acompanhamento em toda a jornada de compra'
+    ];
+    return { tabs, show0: active === 0, show1: active === 1, show2: active === 2, show3: active === 3, feedbacks, gallery, cons, pros, vantagens, galleryPrev: () => this.goGallery(this._gi - 1), galleryNext: () => this.goGallery(this._gi + 1) };
+  }
+  componentDidMount() {
+    if (window.lucide) window.lucide.createIcons();
+    this.startCarousel();
+    this._gi = 0;
+    this.startGallery();
+    this.syncGallery();
+  }
+  goGallery(i) {
+    const slides = document.querySelectorAll('.lp-gallery-slide');
+    if (!slides.length) return;
+    const n = slides.length;
+    this._gi = ((i % n) + n) % n;
+    this.syncGallery();
+    this.startGallery();
+  }
+  syncGallery() {
+    document.querySelectorAll('.lp-gallery-slide').forEach(s =>
+      s.style.opacity = (Number(s.dataset.i) === this._gi ? '1' : '0'));
+    document.querySelectorAll('.lp-gallery-dot').forEach(d =>
+      d.style.background = (Number(d.dataset.i) === this._gi ? '#fff' : 'rgba(255,255,255,.3)'));
+  }
+  startGallery() {
+    clearInterval(this._gt);
+    this._gt = setInterval(() => this.goGallery(this._gi + 1), 5000);
+  }
+  startCarousel() {
+    clearInterval(this._t);
+    let i = 0;
+    this._t = setInterval(() => {
+      const slides = document.querySelectorAll('.lp-slide');
+      if (!slides.length) return;
+      i = (i + 1) % slides.length;
+      slides.forEach(s => s.style.opacity = (Number(s.dataset.i) === i ? '1' : '0'));
+    }, 5000);
+  }
+  componentWillUnmount() {
+    clearInterval(this._t);
+    clearInterval(this._gt);
+  }
+  componentDidUpdate() {
+    if (window.lucide) window.lucide.createIcons();
+  }
+}
+</script>
+</body>
+</html>

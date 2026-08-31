@@ -1,0 +1,7 @@
+/* PPI — Web fonts
+ * Inter, weights 400 / 700 / 800 / 900 — served from Google Fonts.
+ * The brand spec ships Inter via Google Fonts (no local binaries provided),
+ * so we declare the family by importing the CDN stylesheet.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap");

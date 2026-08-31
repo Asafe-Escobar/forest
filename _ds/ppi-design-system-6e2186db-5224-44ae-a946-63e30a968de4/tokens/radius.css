@@ -1,0 +1,8 @@
+/* PPI — Border Radius */
+
+:root {
+  --radius-img: 6px;
+  --radius-btn: 7px;
+  --radius-card: 8px;
+  --radius-pill: 999px;
+}

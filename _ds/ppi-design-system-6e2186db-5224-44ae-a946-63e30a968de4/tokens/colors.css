@@ -1,0 +1,56 @@
+/* PPI — Colors
+ * Base palette + semantic aliases. Never use hex direct in code — always reference these vars.
+ */
+
+:root {
+  /* Brand — Blues */
+  --blue-dark: #0c2b56;
+  --blue: #143d73;
+  --blue-soft: #e6f2fb;
+
+  /* Brand — Greens */
+  --green: #009b77;
+  --green-dark: #00795e;
+  --green-soft: #e7f8f7;
+
+  /* Neutrals */
+  --text: #152635;
+  --muted: #647483;
+  --line: #d7e4ec;
+  --surface-muted: #edf5fa;
+  --bg: #f4f8fb;
+  --surface: #ffffff;
+
+  /* Semantics */
+  --orange: #f2b31b;
+  --orange-soft: #fff8e3;
+  --orange-ink: #4f3b08;
+  --yellow-text: #b7791f;
+  --yellow-soft: #fff4d6;
+  --red: #ad3636;
+  --red-soft: #fff6f6;
+
+  /* Status pill colors (in-atendimento uses its own blue) */
+  --pill-attending-bg: #dbeeff;
+  --pill-attending-text: #1552a0;
+
+  /* Focus ring */
+  --focus-ring: 0 0 0 3px rgba(0, 94, 168, 0.16);
+
+  /* Semantic aliases — prefer these in component CSS */
+  --text-body: var(--text);
+  --text-muted: var(--muted);
+  --text-on-brand: #ffffff;
+
+  --surface-page: var(--bg);
+  --surface-card: var(--surface);
+  --surface-input: var(--surface);
+  --surface-ghost: var(--surface-muted);
+
+  --border-default: var(--line);
+  --border-focus: var(--blue);
+
+  --brand-primary: var(--blue);
+  --brand-primary-hover: var(--blue-dark);
+  --brand-accent: var(--green);
+}

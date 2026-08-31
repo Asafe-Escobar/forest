@@ -1,0 +1,6 @@
+/* PPI — Elevation */
+
+:root {
+  --shadow: 0 16px 40px rgba(0, 63, 115, 0.09);
+  --shadow-sm: 0 4px 14px rgba(0, 63, 115, 0.07);
+}
