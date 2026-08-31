@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    .cj-grow { transition: transform .3s ease, background-color .2s ease; }
+    .cj-grow:hover { transform: scale(1.04); }
+    .cj-navlink { transition: color .2s ease; }
+    .cj-navlink:hover { color: #cbab74; }
+    a { color: #cbab74; }
+    a:hover { color: #e0c894; }
+    .cj-reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.16,.7,.3,1), transform .8s cubic-bezier(.16,.7,.3,1); will-change: opacity, transform; }
+    .cj-reveal.cj-in { opacity: 1; transform: none; }
+    html, body { overflow-x: hidden; }
+    #dc-root { display: block; width: 100%; max-width: 100%; overflow-x: hidden; }
+    img, iframe, image-slot { max-width: 100%; display: block; }
+    * { box-sizing: border-box; }
+    body, body * { max-width: 100%; }
+    @media (prefers-reduced-motion: reduce) { .cj-reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+    @media (max-width: 900px) {
+      .cj-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 12px 18px !important;
+        padding: 18px 16px 12px !important;
+      }
+      .cj-header > a:first-child {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+      .cj-nav {
+        width: 100% !important;
+        order: 3 !important;
+        justify-content: center !important;
+        row-gap: 10px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .cj-top-cta {
+        width: 100% !important;
+        max-width: 220px !important;
+        text-align: center !important;
+      }
+      .cj-hero {
+        margin-top: 0 !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+      .cj-features {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(120px, 1fr)) !important;
+      }
+      .cj-gallery-track {
+        grid-template-columns: 1fr !important;
+      }
+      .cj-gallery-track > div {
+        min-height: 200px !important;
+      }
+    }
+    @media (max-width: 560px) {
+      .cj-header {
+        gap: 10px 12px !important;
+        padding-top: 12px !important;
+      }
+      .cj-nav {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px 12px !important;
+      }
+      .cj-nav a {
+        font-size: 10px !important;
+        letter-spacing: .08em !important;
+        line-height: 1.3 !important;
+        white-space: normal !important;
+        text-align: center !important;
+      }
+      .cj-header > a:first-child img {
+        height: 40px !important;
+      }
+      .cj-top-cta {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+      }
+      .cj-hero {
+        margin-top: 0 !important;
+        padding-top: 42px !important;
+        padding-bottom: 36px !important;
+      }
+      .cj-hero h1 {
+        font-size: clamp(28px, 10vw, 40px) !important;
+      }
+      .cj-hero p {
+        font-size: clamp(14px, 5vw, 16px) !important;
+      }
+      .cj-features {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+      }
+      .cj-features > button {
+        display: none !important;
+      }
+      section, footer {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+      .cj-gallery-track > div {
+        min-height: 160px !important;
+      }
+    }
+  </style>
+</helmet>
+<a href="https://wa.me/5511900000000" target="_blank" rel="noopener" aria-label="Fale no WhatsApp" class="cj-grow" style="position:fixed;right:22px;bottom:22px;z-index:50;width:60px;height:60px;border-radius:999px;background:#25D366;box-shadow:0 8px 22px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;text-decoration:none;">
+  <svg width="34" height="34" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.93.96-3.48-.22-.36a9.42 9.42 0 0 1 14.62-11.6 9.36 9.36 0 0 1 2.76 6.67 9.43 9.43 0 0 1-9.4 9.36zM20.13 3.8A11.36 11.36 0 0 0 12.05.5 11.4 11.4 0 0 0 2.14 17.6L.5 23.5l6.05-1.58a11.36 11.36 0 0 0 5.49 1.4h.01a11.4 11.4 0 0 0 8.08-19.52z"/></svg>
+</a>
+<div data-screen-label="Bloco 1" style="background:#122419;font-family:'Jost',sans-serif;">
+  <div style="background:#0d1a12;padding:9px 16px;text-align:center;">
+    <span style="color:#cbab74;font-size:clamp(11px,1.4vw,13px);font-weight:500;letter-spacing:.14em;text-transform:uppercase;">Você merece <strong style="font-weight:600;">o melhor</strong> em cada aspecto da sua vida!</span>
+  </div>
+  <header class="cj-header" style="position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:clamp(12px,2vw,24px);padding:18px clamp(20px,5vw,64px);flex-wrap:nowrap;">
+    <a href="#" style="flex:none;display:flex;align-items:center;text-decoration:none;">
+      <img src="uploads/forest-logo-light.png" alt="Forest Imóveis" style="height:clamp(46px,5vw,58px);width:auto;display:block;">
+    </a>
+    <nav class="cj-nav" style="flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.8vw,30px);flex-wrap:wrap;row-gap:6px;">
+      <a href="#" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Home</a>
+      <a href="#sobre" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">O loteamento</a>
+      <a href="#infra" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Infraestrutura</a>
+      <a href="#galeria" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Galeria</a>
+      <a href="#local" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Localização</a>
+    </nav>
+    <a href="#" class="cj-grow cj-top-cta" style="flex:none;background:#cbab74;color:#12241a;font-size:clamp(11px,1.4vw,13px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:14px clamp(14px,1.8vw,22px);border-radius:4px;text-decoration:none;white-space:nowrap;">Agende sua visita</a>
+  </header>
+  <section class="cj-hero" style="position:relative;overflow:hidden;padding:clamp(70px,11vw,120px) clamp(20px,5vw,64px) clamp(90px,12vw,130px);margin-top:-72px;">
+    <div style="position:absolute;inset:0;z-index:0;"><image-slot id="cj-hero-bg" shape="rect" src="uploads/IMG_4507.JPG.jpeg" placeholder="Foto de fundo do hero"></image-slot></div>
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,26,18,.82) 0%,rgba(18,36,25,.78) 55%,rgba(18,36,25,.92) 100%);"></div>
+    <div class="cj-reveal" style="position:relative;z-index:2;max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:72px;">
+      <h1 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(30px,4.4vw,46px);font-weight:500;line-height:1.22;margin:0;">Bem-vindo(a) ao Loteamento Cotia. Seu terreno em condomínio fechado.</h1>
+      <p style="color:#e6ecdf;font-size:clamp(15px,1.9vw,18px);font-weight:300;line-height:1.6;max-width:520px;margin:22px 0 30px;">Descubra o loteamento dos seus sonhos e desfrute de uma experiência exclusiva ao lado do CT do São Paulo, em Cotia·SP.</p>
+      <a href="#" class="cj-grow" style="background:#cbab74;color:#12241a;font-size:clamp(13px,1.6vw,15px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:17px 34px;border-radius:4px;text-decoration:none;">Tenho interesse em agendar uma visita!</a>
+    </div>
+    <div class="cj-reveal cj-features" style="position:relative;z-index:2;max-width:1080px;margin:clamp(48px,7vw,74px) auto 0;background:rgba(15,26,18,.55);border:1px solid rgba(203,171,116,.35);border-radius:10px;padding:clamp(22px,3vw,34px) clamp(16px,3vw,30px);display:flex;align-items:center;gap:12px;">
+      <button onClick="{{ featPrev }}" aria-label="Anterior" style="flex:none;width:34px;height:34px;border:none;background:transparent;color:#cbab74;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <i data-lucide="chevron-left" style="width:24px;height:24px;"></i>
+      </button>
+      <div style="flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
+            <i data-lucide="{{ f.icon }}" style="width:38px;height:38px;color:#cbab74;stroke-width:1.3;"></i>
+            <span style="color:#f3ecdd;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.7vw,18px);font-weight:500;line-height:1.35;">{{ f.text }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <button onClick="{{ featNext }}" aria-label="Próxima" style="flex:none;width:34px;height:34px;border:none;background:transparent;color:#cbab74;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <i data-lucide="chevron-right" style="width:24px;height:24px;"></i>
+      </button>
+    </div>
+  </section>
+</div>
+<section id="sobre" data-screen-label="Bloco 2" style="background:#122419;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+  <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,60px);align-items:center;">
+    <div style="position:relative;">
+      <div style="position:absolute;left:-14px;bottom:-14px;width:100%;height:100%;border:1px solid #cbab74;border-radius:10px;"></div>
+      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 50px rgba(0,0,0,.35);">
+        <image-slot id="cj-b2-img" shape="rect" src="uploads/WhatsApp Image 2026-08-26 at 10.44.06 (1).jpeg" placeholder="Foto do empreendimento"></image-slot>
+      </div>
+    </div>
+    <div>
+      <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(26px,3.6vw,40px);font-weight:500;line-height:1.22;margin:0 0 24px;">Uma imersão no ritmo suave da natureza de Cotia.</h2>
+      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 16px;">Bem-vindo(a) ao Loteamento Cotia, um projeto urbano com cara de casa, que respeita a natureza local e proporciona o aconchego necessário para toda a família.</p>
+      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 16px;">Localizado ao lado do CT do São Paulo, em Cotia·SP, tem a mobilidade como diferencial, além da convivência e comodidade, onde a urbanização ganha espaço, sem deixar de se conectar com a natureza ao redor.</p>
+      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 30px;">Tranquilo e ao mesmo tempo movimentado, pois aqui tudo está por perto: <strong style="font-weight:500;color:#f3ecdd;">shoppings, supermercados, restaurantes, academias, as melhores escolas, parques, hospitais, igrejas</strong>, etc.</p>
+      <a href="#" class="cj-grow" style="display:inline-block;border:1px solid #cbab74;color:#cbab74;font-size:clamp(12px,1.5vw,14px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 30px;border-radius:4px;text-decoration:none;">Ver ficha técnica</a>
+    </div>
+  </div>
+</section>
+<section id="infra" data-screen-label="Bloco 3" style="position:relative;overflow:hidden;background:#0f2015;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+  <div style="position:absolute;inset:0;z-index:0;opacity:.10;"><image-slot id="cj-b3-bg" shape="rect" src="uploads/IMG_4508.JPG.jpeg" placeholder="Fundo (opcional)"></image-slot></div>
+  <div class="cj-reveal" style="position:relative;z-index:1;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,60px);align-items:center;">
+    <div>
+      <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(26px,3.6vw,40px);font-weight:500;line-height:1.22;margin:0 0 20px;">Seu Refúgio Particular!</h2>
+      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 28px;">No Loteamento Cotia, cada terreno foi cuidadosamente planejado para proporcionar o máximo de conforto, bem-estar e liberdade para construir do seu jeito. Com infraestrutura completa e um entorno que só a natureza de Cotia oferece, aqui você encontra o equilíbrio perfeito entre exclusividade e praticidade.</p>
+      <ul style="list-style:none;margin:0 0 30px;padding:0;display:flex;flex-direction:column;">
+        <sc-for list="{{ specs }}" as="s" hint-placeholder-count="4">
+          <li style="display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid rgba(203,171,116,.25);">
+            <i data-lucide="{{ s.icon }}" style="width:24px;height:24px;color:#cbab74;flex:none;stroke-width:1.4;"></i>
+            <span style="color:#f3ecdd;font-size:clamp(14px,1.6vw,16px);font-weight:400;">{{ s.text }}</span>
+          </li>
+        </sc-for>
+      </ul>
+      <a href="#" class="cj-grow" style="display:inline-block;border:1px solid #cbab74;color:#cbab74;font-size:clamp(12px,1.5vw,14px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 30px;border-radius:4px;text-decoration:none;">Fale com a corretora</a>
+    </div>
+    <div style="position:relative;">
+      <div style="position:absolute;right:-14px;bottom:-14px;width:100%;height:100%;border:1px solid #cbab74;border-radius:10px;"></div>
+      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:5/4;box-shadow:0 24px 50px rgba(0,0,0,.35);">
+        <image-slot id="cj-b3-img" shape="rect" src="uploads/WhatsApp Image 2026-08-26 at 10.44.05.jpeg" placeholder="Foto do loteamento"></image-slot>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="galeria" data-screen-label="Bloco 4" style="background:#122419;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+  <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;">
+    <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(24px,3.4vw,38px);font-weight:500;line-height:1.22;text-align:center;margin:0;">Vislumbre a Vida no Loteamento Cotia:</h2>
+    <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.6;text-align:center;max-width:640px;margin:16px 0 0;">Onde cada detalhe foi pensado para oferecer uma experiência de moradia única e que proporcione bem-estar.</p>
+    <div style="width:100%;background:#0f2015;border:1px solid rgba(203,171,116,.22);border-radius:12px;padding:clamp(18px,2.6vw,28px);margin-top:clamp(32px,4vw,48px);">
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:clamp(20px,3vw,30px);">
+        <sc-for list="{{ galTabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:clamp(6px,1.5vw,14px);">
+        <button onClick="{{ galPrev }}" aria-label="Anterior" style="flex:none;width:36px;height:36px;border:none;background:transparent;color:#cbab74;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+          <i data-lucide="chevron-left" style="width:26px;height:26px;"></i>
+        </button>
+        <div class="cj-gallery-track" style="flex:1;display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:clamp(10px,1.6vw,18px);align-items:center;">
+          <sc-for list="{{ galImgs }}" as="g" hint-placeholder-count="3">
+            <div style="{{ g.wrapStyle }}">
+              <image-slot id="{{ g.slot }}" shape="rect" src="{{ g.src }}" placeholder="Foto"></image-slot>
+            </div>
+          </sc-for>
+        </div>
+        <button onClick="{{ galNext }}" aria-label="Próxima" style="flex:none;width:36px;height:36px;border:none;background:transparent;color:#cbab74;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+          <i data-lucide="chevron-right" style="width:26px;height:26px;"></i>
+        </button>
+      </div>
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:20px;">
+        <sc-for list="{{ galDots }}" as="d" hint-placeholder-count="6">
+          <button onClick="{{ d.onClick }}" aria-label="Ir para foto" style="{{ d.style }}"></button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="local" data-screen-label="Bloco 5" style="background:#0f2015;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+  <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,60px);align-items:center;">
+    <div>
+      <i data-lucide="map-pin" style="width:48px;height:48px;color:#cbab74;stroke-width:1.3;"></i>
+      <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(26px,3.6vw,40px);font-weight:500;line-height:1.22;margin:18px 0 20px;">Localização Privilegiada</h2>
+      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 30px;">O Loteamento Cotia está estrategicamente localizado em uma das áreas mais nobres de Cotia·SP, ao lado do CT do São Paulo. Literalmente abraçado pela natureza e por todo o encanto e conveniência que a região proporciona.</p>
+      <a href="#" class="cj-grow" style="display:inline-block;border:1px solid #cbab74;color:#cbab74;font-size:clamp(12px,1.5vw,14px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 30px;border-radius:4px;text-decoration:none;">Quero conhecer o local!</a>
+    </div>
+    <div style="position:relative;">
+      <div style="position:absolute;right:-14px;bottom:-14px;width:100%;height:100%;border:1px solid #cbab74;border-radius:10px;"></div>
+      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 50px rgba(0,0,0,.35);">
+        <iframe title="Mapa — Cotia · SP" src="https://www.openstreetmap.org/export/embed.html?bbox=-46.92459%2C-23.63032%2C-46.90459%2C-23.61032&amp;layer=mapnik&amp;marker=-23.62032%2C-46.91459" style="width:100%;height:100%;border:0;display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<section data-screen-label="Bloco 6" style="position:relative;overflow:hidden;font-family:'Jost',sans-serif;padding:clamp(60px,9vw,110px) clamp(20px,5vw,64px);">
+  <div style="position:absolute;inset:0;z-index:0;"><image-slot id="cj-b6-bg" shape="rect" src="uploads/WhatsApp Image 2026-08-26 at 10.44.06.jpeg" placeholder="Foto de fundo do CTA"></image-slot></div>
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(203,171,116,.86),rgba(190,155,98,.9));"></div>
+  <div class="cj-reveal" style="position:relative;z-index:2;max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;">
+    <h2 style="font-family:'Lora',serif;color:#2b3a26;font-size:clamp(26px,4vw,44px);font-weight:600;line-height:1.2;margin:0;">Agende uma visita e conheça o Loteamento Cotia.</h2>
+    <p style="color:#3a3324;font-size:clamp(14px,1.7vw,17px);font-weight:400;line-height:1.6;max-width:540px;margin:20px 0 32px;">Não deixe escapar essa <strong style="font-weight:600;">oportunidade única</strong> de garantir o seu terreno. Entre em contato agora e prepare-se para viver uma vida extraordinária!</p>
+    <a href="#" class="cj-grow" style="background:#12241a;color:#f3ecdd;font-size:clamp(13px,1.6vw,15px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:17px 34px;border-radius:4px;text-decoration:none;">Quero conhecer o Loteamento Cotia!</a>
+  </div>
+</section>
+<footer data-screen-label="Rodapé" style="background:#0d1a12;font-family:'Jost',sans-serif;padding:clamp(40px,6vw,64px) clamp(20px,5vw,64px) clamp(28px,4vw,40px);">
+  <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;">
+    <a href="#" style="flex:none;display:flex;align-items:center;text-decoration:none;">
+      <img src="uploads/forest-logo-light.png" alt="Forest Imóveis" style="height:clamp(50px,5vw,62px);width:auto;display:block;">
+    </a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="#" aria-label="WhatsApp" class="cj-grow" style="width:42px;height:42px;border-radius:999px;background:rgba(203,171,116,.14);border:1px solid rgba(203,171,116,.4);display:flex;align-items:center;justify-content:center;text-decoration:none;">
+        <i data-lucide="message-circle" style="width:20px;height:20px;color:#cbab74;"></i>
+      </a>
+      <a href="#" aria-label="Instagram" class="cj-grow" style="width:42px;height:42px;border-radius:999px;background:rgba(203,171,116,.14);border:1px solid rgba(203,171,116,.4);display:flex;align-items:center;justify-content:center;text-decoration:none;">
+        <i data-lucide="instagram" style="width:20px;height:20px;color:#cbab74;"></i>
+      </a>
+      <a href="#" aria-label="Início" class="cj-grow" style="width:42px;height:42px;border-radius:999px;background:rgba(203,171,116,.14);border:1px solid rgba(203,171,116,.4);display:flex;align-items:center;justify-content:center;text-decoration:none;">
+        <i data-lucide="home" style="width:20px;height:20px;color:#cbab74;"></i>
+      </a>
+    </div>
+  </div>
+  <div style="max-width:1080px;margin:clamp(28px,4vw,40px) auto 0;border-top:1px solid rgba(203,171,116,.18);padding-top:22px;text-align:center;">
+    <p style="color:rgba(243,236,221,.55);font-size:13px;font-weight:300;line-height:1.6;margin:0;">Copyright <strong style="font-weight:500;color:rgba(243,236,221,.8);">Forest Imóveis</strong> · CRECI 139910 — Todos os direitos reservados.</p>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { featStart: 0, galTab: 0, galStart: 0 };
+  renderVals() {
+    const all = [
+      { icon: 'shield-check', text: 'Guarita com segurança 24h.' },
+      { icon: 'waves', text: 'Lago privativo exclusivo.' },
+      { icon: 'store', text: 'Centro comercial integrado.' },
+      { icon: 'leaf', text: 'Paisagismo e áreas verdes.' },
+      { icon: 'dumbbell', text: 'Espaço fitness ao ar livre.' },
+      { icon: 'route', text: 'Ruas pavimentadas e arborizadas.' }
+    ];
+    const n = 4;
+    const start = this.state.featStart;
+    const features = Array.from({ length: n }, (_, k) => all[(start + k) % all.length]);
+    const specs = [
+      { icon: 'ruler', text: 'Terrenos de 125 m² a 250 m².' },
+      { icon: 'fence', text: 'Loteamento 100% fechado.' },
+      { icon: 'route', text: 'Ruas pavimentadas e arborizadas.' },
+      { icon: 'shield-check', text: 'Guarita com segurança 24 horas.' }
+    ];
+    const galData = [
+      { label: 'Galeria', imgs: ['uploads/IMG_4507.JPG.jpeg', 'uploads/IMG_4508.JPG.jpeg', 'uploads/IMG_4509.JPG.jpeg', 'uploads/WhatsApp Image 2026-08-26 at 10.44.05.jpeg'] },
+      { label: 'Infraestrutura', imgs: ['uploads/IMG_4517.JPG.jpeg', 'uploads/IMG_4518.JPG (1).jpeg', 'uploads/WhatsApp Image 2026-08-26 at 10.44.06.jpeg'] },
+      { label: 'Plantas', imgs: ['uploads/WhatsApp Image 2026-08-26 at 10.44.06 (1).jpeg', 'uploads/WhatsApp Image 2026-08-26 at 10.44.05.jpeg', 'uploads/IMG_4509.JPG.jpeg'] }
+    ];
+    const gt = this.state.galTab;
+    const imgs = galData[gt].imgs;
+    const gs = this.state.galStart % imgs.length;
+    const tabBase = { fontFamily: "'Jost',sans-serif", fontSize: 'clamp(11px,1.5vw,13px)', fontWeight: 500, letterSpacing: '.08em', textTransform: 'uppercase', padding: '13px clamp(18px,3vw,34px)', borderRadius: '6px', cursor: 'pointer', transition: 'background-color .2s ease,color .2s ease' };
+    const galTabs = galData.map((d, i) => ({
+      label: d.label,
+      onClick: () => this.setState({ galTab: i, galStart: 0 }),
+      style: i === gt
+        ? { ...tabBase, background: '#cbab74', color: '#12241a', border: '1px solid #cbab74' }
+        : { ...tabBase, background: 'transparent', color: '#f3ecdd', border: '1px solid rgba(203,171,116,.4)' }
+    }));
+    const galImgs = [0, 1, 2].map((k) => {
+      const idx = (gs + k) % imgs.length;
+      return {
+        slot: 'cj-gal-' + gt + '-' + k,
+        src: imgs[idx],
+        wrapStyle: { borderRadius: '10px', overflow: 'hidden', aspectRatio: k === 1 ? '4/3' : '3/4', boxShadow: k === 1 ? '0 18px 40px rgba(0,0,0,.4)' : 'none', opacity: k === 1 ? 1 : .82 }
+      };
+    });
+    const dotBase = { width: '8px', height: '8px', padding: 0, border: 'none', borderRadius: '999px', cursor: 'pointer', transition: 'background-color .2s ease' };
+    const galDots = imgs.map((_, i) => ({
+      onClick: () => this.setState({ galStart: i }),
+      style: { ...dotBase, background: i === gs ? '#cbab74' : 'rgba(203,171,116,.3)' }
+    }));
+    return {
+      galTabs, galImgs, galDots,
+      galPrev: () => this.setState(s => ({ galStart: (s.galStart - 1 + imgs.length) % imgs.length })),
+      galNext: () => this.setState(s => ({ galStart: (s.galStart + 1) % imgs.length })),
+      specs,
+      features,
+      featPrev: () => this.setState(s => ({ featStart: (s.featStart - 1 + all.length) % all.length })),
+      featNext: () => this.setState(s => ({ featStart: (s.featStart + 1) % all.length }))
+    };
+  }
+  componentDidMount() {
+    if (window.lucide) window.lucide.createIcons();
+    this.setupReveal();
+  }
+  componentDidUpdate() { if (window.lucide) window.lucide.createIcons(); }
+  setupReveal() {
+    if (this._io) return;
+    const els = Array.from(document.querySelectorAll('.cj-reveal'));
+    if (!els.length) { setTimeout(() => this.setupReveal(), 120); return; }
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('cj-in'); this._io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => this._io.observe(el));
+  }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+}
+</script>
+</body>
+</html>
