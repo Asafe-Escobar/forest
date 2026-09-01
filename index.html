@@ -23,12 +23,14 @@
     a:hover { color: #e0c894; }
     .cj-reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.16,.7,.3,1), transform .8s cubic-bezier(.16,.7,.3,1); will-change: opacity, transform; }
     .cj-reveal.cj-in { opacity: 1; transform: none; }
+    @keyframes cjPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(224,86,63,.5); } 50% { box-shadow: 0 0 0 8px rgba(224,86,63,0); } }
+    .cj-urgency-badge { animation: cjPulse 1.8s ease-in-out infinite; }
     html, body { overflow-x: hidden; }
     #dc-root { display: block; width: 100%; max-width: 100%; overflow-x: hidden; }
     img, iframe, image-slot { max-width: 100%; display: block; }
     * { box-sizing: border-box; }
     body, body * { max-width: 100%; }
-    @media (prefers-reduced-motion: reduce) { .cj-reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+    @media (prefers-reduced-motion: reduce) { .cj-reveal { opacity: 1 !important; transform: none !important; transition: none !important; } .cj-urgency-badge { animation: none !important; } }
     @media (max-width: 900px) {
       .cj-header {
         flex-direction: column !important;
@@ -147,7 +149,7 @@
     <a href="#" class="cj-grow cj-top-cta" style="flex:none;background:#cbab74;color:#12241a;font-size:clamp(11px,1.4vw,13px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:14px clamp(14px,1.8vw,22px);border-radius:4px;text-decoration:none;white-space:nowrap;">Agende sua visita</a>
   </header>
   <section class="cj-hero" style="position:relative;overflow:hidden;padding:clamp(70px,11vw,120px) clamp(20px,5vw,64px) clamp(90px,12vw,130px);margin-top:-72px;">
-    <div style="position:absolute;inset:0;z-index:0;"><image-slot id="cj-hero-bg" shape="rect" src="uploads/IMG_4507.JPG.jpeg" placeholder="Foto de fundo do hero"></image-slot></div>
+    <div style="position:absolute;inset:0;z-index:0;"><image-slot id="cj-hero-bg" shape="rect" src="uploads/entrada.jpeg" placeholder="Foto de fundo do hero"></image-slot></div>
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,26,18,.82) 0%,rgba(18,36,25,.78) 55%,rgba(18,36,25,.92) 100%);"></div>
     <div class="cj-reveal" style="position:relative;z-index:2;max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:72px;">
       <h1 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(30px,4.4vw,46px);font-weight:500;line-height:1.22;margin:0;">Bem-vindo(a) ao Loteamento Cotia. Seu terreno em condomínio fechado.</h1>
@@ -176,8 +178,8 @@
   <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,60px);align-items:center;">
     <div style="position:relative;">
       <div style="position:absolute;left:-14px;bottom:-14px;width:100%;height:100%;border:1px solid #cbab74;border-radius:10px;"></div>
-      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 50px rgba(0,0,0,.35);">
-        <image-slot id="cj-b2-img" shape="rect" src="uploads/WhatsApp Image 2026-08-26 at 10.44.06 (1).jpeg" placeholder="Foto do empreendimento"></image-slot>
+      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:3/2;box-shadow:0 24px 50px rgba(0,0,0,.35);">
+        <image-slot id="cj-b2-img" shape="rect" src="uploads/florestas.jpeg" placeholder="Área verde preservada"></image-slot>
       </div>
     </div>
     <div>
@@ -207,10 +209,19 @@
     </div>
     <div style="position:relative;">
       <div style="position:absolute;right:-14px;bottom:-14px;width:100%;height:100%;border:1px solid #cbab74;border-radius:10px;"></div>
-      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:5/4;box-shadow:0 24px 50px rgba(0,0,0,.35);">
-        <image-slot id="cj-b3-img" shape="rect" src="uploads/WhatsApp Image 2026-08-26 at 10.44.05.jpeg" placeholder="Foto do loteamento"></image-slot>
+      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:3/2;box-shadow:0 24px 50px rgba(0,0,0,.35);">
+        <image-slot id="cj-b3-img" shape="rect" src="uploads/piscina.jpeg" placeholder="Piscina do condomínio"></image-slot>
       </div>
     </div>
+  </div>
+</section>
+<section id="comercio" data-screen-label="Bloco 3.5" style="position:relative;overflow:hidden;font-family:'Jost',sans-serif;padding:clamp(90px,13vw,150px) clamp(20px,5vw,64px) clamp(60px,8vw,100px);">
+  <div style="position:absolute;inset:0;z-index:0;"><image-slot id="cj-comercio-bg" shape="rect" src="uploads/lojas.jpeg" placeholder="Centro comercial"></image-slot></div>
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,26,18,.35) 0%,rgba(13,26,18,.45) 45%,rgba(13,26,18,.94) 100%);"></div>
+  <div class="cj-reveal" style="position:relative;z-index:2;max-width:640px;">
+    <i data-lucide="store" style="width:44px;height:44px;color:#cbab74;stroke-width:1.3;"></i>
+    <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(26px,3.6vw,40px);font-weight:500;line-height:1.22;margin:16px 0 20px;">Centro Comercial Completo</h2>
+    <p style="color:#f3ecdd;font-size:clamp(14px,1.7vw,17px);font-weight:300;line-height:1.75;margin:0;">Um centro comercial pensado para atender tanto o comércio local quanto os moradores do Loteamento Cotia, com <strong style="font-weight:500;color:#cbab74;">padaria, mini mercado e lojas de conveniência</strong> a poucos passos de casa — praticidade no dia a dia, sem precisar sair do bairro.</p>
   </div>
 </section>
 <section id="galeria" data-screen-label="Bloco 4" style="background:#122419;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
@@ -262,8 +273,26 @@
     </div>
   </div>
 </section>
+<section id="urgencia" data-screen-label="Bloco 5.5" style="background:#122419;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+  <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,60px);align-items:center;">
+    <div style="position:relative;max-width:360px;margin:0 auto;width:100%;">
+      <div style="position:absolute;left:-14px;bottom:-14px;width:100%;height:100%;border:1px solid #e0563f;border-radius:10px;"></div>
+      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:2/3;box-shadow:0 24px 50px rgba(0,0,0,.4);">
+        <image-slot id="cj-urgencia-img" shape="rect" src="uploads/urgencia.jpeg" placeholder="Condições especiais e últimas unidades"></image-slot>
+      </div>
+    </div>
+    <div>
+      <span class="cj-urgency-badge" style="display:inline-flex;align-items:center;gap:8px;background:rgba(224,86,63,.15);border:1px solid #e0563f;color:#ff8a72;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:999px;margin-bottom:18px;">
+        <i data-lucide="flame" style="width:16px;height:16px;"></i> Últimas unidades disponíveis
+      </span>
+      <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(26px,3.6vw,40px);font-weight:500;line-height:1.22;margin:0 0 20px;">Essa condição não vai durar.</h2>
+      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 30px;">Restam poucos lotes com entrada facilitada e parcelas que cabem no seu bolso, direto pela construtora, <strong style="font-weight:500;color:#f3ecdd;">sem comprovação de renda e sem burocracia</strong>. Confira as condições ao lado e garanta o seu antes que mudem.</p>
+      <a href="#" class="cj-grow" style="display:inline-block;background:#e0563f;color:#fff;font-size:clamp(13px,1.6vw,15px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:17px 34px;border-radius:4px;text-decoration:none;">Quero garantir meu lote agora!</a>
+    </div>
+  </div>
+</section>
 <section data-screen-label="Bloco 6" style="position:relative;overflow:hidden;font-family:'Jost',sans-serif;padding:clamp(60px,9vw,110px) clamp(20px,5vw,64px);">
-  <div style="position:absolute;inset:0;z-index:0;"><image-slot id="cj-b6-bg" shape="rect" src="uploads/WhatsApp Image 2026-08-26 at 10.44.06.jpeg" placeholder="Foto de fundo do CTA"></image-slot></div>
+  <div style="position:absolute;inset:0;z-index:0;"><image-slot id="cj-b6-bg" shape="rect" src="uploads/lateral.jpeg" placeholder="Foto de fundo do CTA"></image-slot></div>
   <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(203,171,116,.86),rgba(190,155,98,.9));"></div>
   <div class="cj-reveal" style="position:relative;z-index:2;max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;">
     <h2 style="font-family:'Lora',serif;color:#2b3a26;font-size:clamp(26px,4vw,44px);font-weight:600;line-height:1.2;margin:0;">Agende uma visita e conheça o Loteamento Cotia.</h2>
