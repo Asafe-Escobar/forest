@@ -25,6 +25,8 @@
     .cj-reveal.cj-in { opacity: 1; transform: none; }
     @keyframes cjPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(224,86,63,.5); } 50% { box-shadow: 0 0 0 8px rgba(224,86,63,0); } }
     .cj-urgency-badge { animation: cjPulse 1.8s ease-in-out infinite; }
+    .cj-lazer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1px; background: rgba(203,171,116,.18); border: 1px solid rgba(203,171,116,.18); border-radius: 10px; overflow: hidden; }
+    .cj-lazer-item { background: #0f2015; display: flex; align-items: center; gap: 12px; padding: 16px 18px; }
     html, body { overflow-x: hidden; }
     #dc-root { display: block; width: 100%; max-width: 100%; overflow-x: hidden; }
     img, iframe, image-slot { max-width: 100%; display: block; }
@@ -50,7 +52,7 @@
         justify-content: center !important;
         row-gap: 10px !important;
         display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
       }
       .cj-top-cta {
         width: 100% !important;
@@ -62,7 +64,7 @@
         padding-left: 16px !important;
         padding-right: 16px !important;
       }
-      .cj-features {
+      .cj-facts {
         display: grid !important;
         grid-template-columns: repeat(2, minmax(120px, 1fr)) !important;
       }
@@ -110,13 +112,10 @@
       .cj-hero p {
         font-size: clamp(14px, 5vw, 16px) !important;
       }
-      .cj-features {
+      .cj-facts {
         display: grid !important;
         grid-template-columns: 1fr !important;
         gap: 18px !important;
-      }
-      .cj-features > button {
-        display: none !important;
       }
       section, footer {
         padding-left: 16px !important;
@@ -124,6 +123,9 @@
       }
       .cj-gallery-track > div {
         min-height: 160px !important;
+      }
+      .cj-lazer-grid {
+        grid-template-columns: 1fr !important;
       }
     }
   </style>
@@ -139,12 +141,13 @@
     <a href="#" style="flex:none;display:flex;align-items:center;text-decoration:none;">
       <img src="uploads/forest-logo-light.png" alt="Forest Imóveis" style="height:clamp(46px,5vw,58px);width:auto;display:block;">
     </a>
-    <nav class="cj-nav" style="flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.8vw,30px);flex-wrap:wrap;row-gap:6px;">
+    <nav class="cj-nav" style="flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,26px);flex-wrap:wrap;row-gap:6px;">
       <a href="#" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Home</a>
       <a href="#sobre" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;">O loteamento</a>
+      <a href="#local" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Localização</a>
+      <a href="#lazer" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Lazer</a>
       <a href="#infra" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Infraestrutura</a>
       <a href="#galeria" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Galeria</a>
-      <a href="#local" class="cj-navlink" style="color:#f3ecdd;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">Localização</a>
     </nav>
     <a href="#" class="cj-grow cj-top-cta" style="flex:none;background:#cbab74;color:#12241a;font-size:clamp(11px,1.4vw,13px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:14px clamp(14px,1.8vw,22px);border-radius:4px;text-decoration:none;white-space:nowrap;">Agende sua visita</a>
   </header>
@@ -153,24 +156,26 @@
     <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,26,18,.82) 0%,rgba(18,36,25,.78) 55%,rgba(18,36,25,.92) 100%);"></div>
     <div class="cj-reveal" style="position:relative;z-index:2;max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:72px;">
       <h1 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(30px,4.4vw,46px);font-weight:500;line-height:1.22;margin:0;">Bem-vindo(a) ao Loteamento Colinas do Sol. Seu terreno em condomínio fechado.</h1>
-      <p style="color:#e6ecdf;font-size:clamp(15px,1.9vw,18px);font-weight:300;line-height:1.6;max-width:520px;margin:22px 0 30px;">Descubra o loteamento dos seus sonhos e desfrute de uma experiência exclusiva ao lado do CT do São Paulo, em Cotia·SP.</p>
+      <p style="color:#e6ecdf;font-size:clamp(15px,1.9vw,18px);font-weight:300;line-height:1.6;max-width:560px;margin:22px 0 30px;">Descubra o loteamento dos seus sonhos, bem ao lado do Hotel do Centro de Treinamento do São Paulo Futebol Clube, em Cotia·SP.</p>
       <a href="#" class="cj-grow" style="background:#cbab74;color:#12241a;font-size:clamp(13px,1.6vw,15px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:17px 34px;border-radius:4px;text-decoration:none;">Tenho interesse em agendar uma visita!</a>
     </div>
-    <div class="cj-reveal cj-features" style="position:relative;z-index:2;max-width:1080px;margin:clamp(48px,7vw,74px) auto 0;background:rgba(15,26,18,.55);border:1px solid rgba(203,171,116,.35);border-radius:10px;padding:clamp(22px,3vw,34px) clamp(16px,3vw,30px);display:flex;align-items:center;gap:12px;">
-      <button onClick="{{ featPrev }}" aria-label="Anterior" style="flex:none;width:34px;height:34px;border:none;background:transparent;color:#cbab74;cursor:pointer;display:flex;align-items:center;justify-content:center;">
-        <i data-lucide="chevron-left" style="width:24px;height:24px;"></i>
-      </button>
-      <div style="flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;">
-        <sc-for list="{{ features }}" as="f" hint-placeholder-count="4">
-          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
-            <i data-lucide="{{ f.icon }}" style="width:38px;height:38px;color:#cbab74;stroke-width:1.3;"></i>
-            <span style="color:#f3ecdd;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.7vw,18px);font-weight:500;line-height:1.35;">{{ f.text }}</span>
-          </div>
-        </sc-for>
+    <div class="cj-reveal cj-facts" style="position:relative;z-index:2;max-width:1080px;margin:clamp(48px,7vw,74px) auto 0;background:rgba(15,26,18,.55);border:1px solid rgba(203,171,116,.35);border-radius:10px;padding:clamp(22px,3vw,34px) clamp(16px,3vw,30px);display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
+        <i data-lucide="ruler" style="width:32px;height:32px;color:#cbab74;stroke-width:1.3;"></i>
+        <span style="color:#f3ecdd;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.7vw,18px);font-weight:500;line-height:1.35;">Terrenos de 125 m² a 250 m²</span>
       </div>
-      <button onClick="{{ featNext }}" aria-label="Próxima" style="flex:none;width:34px;height:34px;border:none;background:transparent;color:#cbab74;cursor:pointer;display:flex;align-items:center;justify-content:center;">
-        <i data-lucide="chevron-right" style="width:24px;height:24px;"></i>
-      </button>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
+        <i data-lucide="fence" style="width:32px;height:32px;color:#cbab74;stroke-width:1.3;"></i>
+        <span style="color:#f3ecdd;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.7vw,18px);font-weight:500;line-height:1.35;">Loteamento 100% fechado</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
+        <i data-lucide="hand-coins" style="width:32px;height:32px;color:#cbab74;stroke-width:1.3;"></i>
+        <span style="color:#f3ecdd;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.7vw,18px);font-weight:500;line-height:1.35;">Entrada facilitada</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
+        <i data-lucide="sparkles" style="width:32px;height:32px;color:#cbab74;stroke-width:1.3;"></i>
+        <span style="color:#f3ecdd;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.7vw,18px);font-weight:500;line-height:1.35;">Mais de 20 itens de lazer</span>
+      </div>
     </div>
   </section>
 </div>
@@ -185,13 +190,47 @@
     <div>
       <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(26px,3.6vw,40px);font-weight:500;line-height:1.22;margin:0 0 24px;">Uma imersão no ritmo suave da natureza de Cotia.</h2>
       <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 16px;">Bem-vindo(a) ao Loteamento Colinas do Sol, um projeto urbano com cara de casa, que respeita a natureza local e proporciona o aconchego necessário para toda a família.</p>
-      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 16px;">Localizado ao lado do CT do São Paulo, em Cotia·SP, tem a mobilidade como diferencial, além da convivência e comodidade, onde a urbanização ganha espaço, sem deixar de se conectar com a natureza ao redor.</p>
+      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 16px;">Localizado ao lado do Hotel do Centro de Treinamento do São Paulo Futebol Clube, em Cotia·SP, tem a mobilidade como diferencial, além da convivência e comodidade, onde a urbanização ganha espaço, sem deixar de se conectar com a natureza ao redor.</p>
       <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 30px;">Tranquilo e ao mesmo tempo movimentado, pois aqui tudo está por perto: <strong style="font-weight:500;color:#f3ecdd;">shoppings, supermercados, restaurantes, academias, as melhores escolas, parques, hospitais, igrejas</strong>, etc.</p>
       <a href="#" class="cj-grow" style="display:inline-block;border:1px solid #cbab74;color:#cbab74;font-size:clamp(12px,1.5vw,14px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 30px;border-radius:4px;text-decoration:none;">Ver ficha técnica</a>
     </div>
   </div>
 </section>
-<section id="infra" data-screen-label="Bloco 3" style="position:relative;overflow:hidden;background:#0f2015;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+<section id="local" data-screen-label="Bloco 3" style="background:#0f2015;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+  <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,60px);align-items:center;">
+    <div>
+      <i data-lucide="map-pin" style="width:48px;height:48px;color:#cbab74;stroke-width:1.3;"></i>
+      <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(26px,3.6vw,40px);font-weight:500;line-height:1.22;margin:18px 0 20px;">Localização Privilegiada</h2>
+      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 30px;">O Loteamento Colinas do Sol está estrategicamente localizado em uma das áreas mais nobres de Cotia·SP, ao lado do Hotel do Centro de Treinamento do São Paulo Futebol Clube — o CT onde o time se concentra antes dos jogos. Literalmente abraçado pela natureza e por todo o encanto e conveniência que a região proporciona, é atualmente considerado o loteamento mais próximo da capital paulista.</p>
+      <a href="#" class="cj-grow" style="display:inline-block;border:1px solid #cbab74;color:#cbab74;font-size:clamp(12px,1.5vw,14px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 30px;border-radius:4px;text-decoration:none;">Quero conhecer o local!</a>
+    </div>
+    <div style="position:relative;">
+      <div style="position:absolute;right:-14px;bottom:-14px;width:100%;height:100%;border:1px solid #cbab74;border-radius:10px;"></div>
+      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 50px rgba(0,0,0,.35);">
+        <iframe title="Mapa — Cotia · SP" src="https://www.openstreetmap.org/export/embed.html?bbox=-46.92459%2C-23.63032%2C-46.90459%2C-23.61032&amp;layer=mapnik&amp;marker=-23.62032%2C-46.91459" style="width:100%;height:100%;border:0;display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="lazer" data-screen-label="Bloco 4" style="background:#122419;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+  <div class="cj-reveal" style="max-width:1080px;margin:0 auto;">
+    <div style="max-width:640px;margin:0 auto;text-align:center;">
+      <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(26px,3.6vw,40px);font-weight:500;line-height:1.22;margin:0 0 16px;">Mais de 20 Itens de Lazer</h2>
+      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0;">O Residencial Colinas do Sol foi pensado para sua família viver com muita alegria e qualidade de vida. Confira tudo o que está incluso:</p>
+    </div>
+    <div class="cj-lazer-grid" style="margin-top:clamp(32px,4vw,48px);">
+      <sc-for list="{{ lazer }}" as="item" hint-placeholder-count="21">
+        <div class="cj-lazer-item">
+          <span style="flex:none;width:36px;height:36px;border-radius:999px;border:1px solid rgba(203,171,116,.55);display:flex;align-items:center;justify-content:center;">
+            <i data-lucide="{{ item.icon }}" style="width:18px;height:18px;color:#cbab74;stroke-width:1.6;"></i>
+          </span>
+          <span style="color:#f3ecdd;font-size:13.5px;font-weight:400;">{{ item.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+<section id="infra" data-screen-label="Bloco 5" style="position:relative;overflow:hidden;background:#0f2015;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
   <div style="position:absolute;inset:0;z-index:0;opacity:.10;"><image-slot id="cj-b3-bg" shape="rect" src="uploads/IMG_4508.JPG.jpeg" placeholder="Fundo (opcional)"></image-slot></div>
   <div class="cj-reveal" style="position:relative;z-index:1;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,60px);align-items:center;">
     <div>
@@ -215,7 +254,7 @@
     </div>
   </div>
 </section>
-<section id="comercio" data-screen-label="Bloco 3.5" style="position:relative;overflow:hidden;font-family:'Jost',sans-serif;padding:clamp(90px,13vw,150px) clamp(20px,5vw,64px) clamp(60px,8vw,100px);">
+<section id="comercio" data-screen-label="Bloco 5.5" style="position:relative;overflow:hidden;font-family:'Jost',sans-serif;padding:clamp(90px,13vw,150px) clamp(20px,5vw,64px) clamp(60px,8vw,100px);">
   <div style="position:absolute;inset:0;z-index:0;"><image-slot id="cj-comercio-bg" shape="rect" src="uploads/lojas.jpeg" placeholder="Centro comercial"></image-slot></div>
   <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,26,18,.35) 0%,rgba(13,26,18,.45) 45%,rgba(13,26,18,.94) 100%);"></div>
   <div class="cj-reveal" style="position:relative;z-index:2;max-width:640px;">
@@ -224,7 +263,7 @@
     <p style="color:#f3ecdd;font-size:clamp(14px,1.7vw,17px);font-weight:300;line-height:1.75;margin:0;">Um centro comercial pensado para atender tanto o comércio local quanto os moradores do Loteamento Colinas do Sol, com <strong style="font-weight:500;color:#cbab74;">padaria, mini mercado e lojas de conveniência</strong> a poucos passos de casa — praticidade no dia a dia, sem precisar sair do bairro.</p>
   </div>
 </section>
-<section id="galeria" data-screen-label="Bloco 4" style="background:#122419;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+<section id="galeria" data-screen-label="Bloco 6" style="background:#122419;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
   <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;">
     <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(24px,3.4vw,38px);font-weight:500;line-height:1.22;text-align:center;margin:0;">Vislumbre a Vida no Loteamento Colinas do Sol:</h2>
     <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.6;text-align:center;max-width:640px;margin:16px 0 0;">Onde cada detalhe foi pensado para oferecer uma experiência de moradia única e que proporcione bem-estar.</p>
@@ -257,23 +296,7 @@
     </div>
   </div>
 </section>
-<section id="local" data-screen-label="Bloco 5" style="background:#0f2015;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
-  <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,60px);align-items:center;">
-    <div>
-      <i data-lucide="map-pin" style="width:48px;height:48px;color:#cbab74;stroke-width:1.3;"></i>
-      <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(26px,3.6vw,40px);font-weight:500;line-height:1.22;margin:18px 0 20px;">Localização Privilegiada</h2>
-      <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.7;margin:0 0 30px;">O Loteamento Colinas do Sol está estrategicamente localizado em uma das áreas mais nobres de Cotia·SP, ao lado do Centro de Treinamento do São Paulo Futebol Clube. Literalmente abraçado pela natureza e por todo o encanto e conveniência que a região proporciona, atualmente cotado como o loteamento mais próximo da capital de São Paulo.</p>
-      <a href="#" class="cj-grow" style="display:inline-block;border:1px solid #cbab74;color:#cbab74;font-size:clamp(12px,1.5vw,14px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:15px 30px;border-radius:4px;text-decoration:none;">Quero conhecer o local!</a>
-    </div>
-    <div style="position:relative;">
-      <div style="position:absolute;right:-14px;bottom:-14px;width:100%;height:100%;border:1px solid #cbab74;border-radius:10px;"></div>
-      <div style="position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 50px rgba(0,0,0,.35);">
-        <iframe title="Mapa — Cotia · SP" src="https://www.openstreetmap.org/export/embed.html?bbox=-46.92459%2C-23.63032%2C-46.90459%2C-23.61032&amp;layer=mapnik&amp;marker=-23.62032%2C-46.91459" style="width:100%;height:100%;border:0;display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="urgencia" data-screen-label="Bloco 5.5" style="background:#122419;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
+<section id="urgencia" data-screen-label="Bloco 7" style="background:#0f2015;font-family:'Jost',sans-serif;padding:clamp(50px,7vw,86px) clamp(20px,5vw,64px);">
   <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,60px);align-items:center;">
     <div style="position:relative;max-width:360px;margin:0 auto;width:100%;">
       <div style="position:absolute;left:-14px;bottom:-14px;width:100%;height:100%;border:1px solid #e0563f;border-radius:10px;"></div>
@@ -291,7 +314,7 @@
     </div>
   </div>
 </section>
-<section data-screen-label="Bloco 6" style="position:relative;overflow:hidden;font-family:'Jost',sans-serif;padding:clamp(60px,9vw,110px) clamp(20px,5vw,64px);">
+<section data-screen-label="Bloco 8" style="position:relative;overflow:hidden;font-family:'Jost',sans-serif;padding:clamp(60px,9vw,110px) clamp(20px,5vw,64px);">
   <div style="position:absolute;inset:0;z-index:0;"><image-slot id="cj-b6-bg" shape="rect" src="uploads/lateral.jpeg" placeholder="Foto de fundo do CTA"></image-slot></div>
   <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(203,171,116,.86),rgba(190,155,98,.9));"></div>
   <div class="cj-reveal" style="position:relative;z-index:2;max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;">
@@ -324,19 +347,31 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { featStart: 0, galTab: 0, galStart: 0 };
+  state = { galTab: 0, galStart: 0 };
   renderVals() {
-    const all = [
-      { icon: 'shield-check', text: 'Guarita com segurança 24h.' },
-      { icon: 'waves', text: 'Lago privativo exclusivo.' },
-      { icon: 'store', text: 'Centro comercial integrado.' },
-      { icon: 'leaf', text: 'Paisagismo e áreas verdes.' },
-      { icon: 'dumbbell', text: 'Espaço fitness ao ar livre.' },
-      { icon: 'route', text: 'Ruas pavimentadas e arborizadas.' }
+    const lazer = [
+      { icon: 'waves', text: 'Piscina adulto e infantil' },
+      { icon: 'circle-dot', text: 'Quadra de basquete' },
+      { icon: 'party-popper', text: 'Salão de festas' },
+      { icon: 'briefcase', text: 'Coworking' },
+      { icon: 'activity', text: 'Pilates' },
+      { icon: 'toy-brick', text: 'Brinquedoteca' },
+      { icon: 'flower-2', text: 'Espaço mulher' },
+      { icon: 'sun', text: 'Beach tênis' },
+      { icon: 'volleyball', text: 'Vôlei de areia' },
+      { icon: 'goal', text: 'Campo de futebol' },
+      { icon: 'flame', text: 'Churrasqueira' },
+      { icon: 'dumbbell', text: 'Academia externa' },
+      { icon: 'users', text: 'Praça de convivência' },
+      { icon: 'footprints', text: 'Pista de caminhada' },
+      { icon: 'utensils-crossed', text: 'Espaço gourmet' },
+      { icon: 'ferris-wheel', text: 'Playground' },
+      { icon: 'fish', text: 'Lago para pesca' },
+      { icon: 'mountain', text: 'Praça das pedras' },
+      { icon: 'tree-pine', text: 'Praça das araucárias' },
+      { icon: 'apple', text: 'Pomar' },
+      { icon: 'tent', text: 'Quiosques' }
     ];
-    const n = 4;
-    const start = this.state.featStart;
-    const features = Array.from({ length: n }, (_, k) => all[(start + k) % all.length]);
     const specs = [
       { icon: 'ruler', text: 'Terrenos de 125 m² a 250 m².' },
       { icon: 'fence', text: 'Loteamento 100% fechado.' },
@@ -377,9 +412,7 @@ class Component extends DCLogic {
       galPrev: () => this.setState(s => ({ galStart: (s.galStart - 1 + imgs.length) % imgs.length })),
       galNext: () => this.setState(s => ({ galStart: (s.galStart + 1) % imgs.length })),
       specs,
-      features,
-      featPrev: () => this.setState(s => ({ featStart: (s.featStart - 1 + all.length) % all.length })),
-      featNext: () => this.setState(s => ({ featStart: (s.featStart + 1) % all.length }))
+      lazer
     };
   }
   componentDidMount() {
