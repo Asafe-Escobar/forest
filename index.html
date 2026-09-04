@@ -320,17 +320,95 @@
     .leisure-head .section-title { max-width: 760px; }
     .leisure-head p { max-width: 390px; margin: 0 0 4px; font-size: 16px; line-height: 1.68; }
     .leisure-stage { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(290px, .65fr); min-height: 620px; }
-    .leisure-visual { position: relative; min-height: 620px; overflow: hidden; background: var(--pine); }
-    .leisure-visual image-slot { position: absolute; inset: 0; }
-    .leisure-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(7,43,40,.55)); pointer-events: none; }
+    .leisure-visual { position: relative; min-height: 620px; overflow: hidden; isolation: isolate; background: var(--pine); }
+    .leisure-photo {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+      transition: opacity .5s ease, transform .8s cubic-bezier(.2,.75,.25,1), filter .55s ease;
+    }
+    .leisure-photo image-slot { position: absolute; inset: 0; }
+    .leisure-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(7,43,40,.55)); pointer-events: none; }
+    .leisure-visual.is-active .leisure-photo { opacity: 0; transform: scale(1.045); filter: blur(9px); }
     .leisure-visual-caption { position: absolute; z-index: 3; left: 30px; bottom: 28px; color: var(--white); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+    .leisure-panel {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 30px;
+      padding: clamp(34px, 4vw, 58px);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(242,200,75,.18), transparent 34%),
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        var(--deep-pine);
+      background-size: auto, 42px 42px, 42px 42px, auto;
+      color: var(--white);
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(.985);
+      transition: opacity .38s ease, transform .55s cubic-bezier(.2,.75,.25,1), visibility .38s;
+    }
+    .leisure-panel.is-active { opacity: 1; visibility: visible; transform: scale(1); }
+    .leisure-panel-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .leisure-panel-kicker { display: block; margin-bottom: 8px; color: var(--sun); font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+    .leisure-panel h3 { margin: 0; font-family: var(--display); font-size: clamp(31px, 4vw, 52px); font-weight: 650; letter-spacing: -.055em; line-height: .95; }
+    .leisure-panel-count { color: rgba(255,255,255,.5); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; white-space: nowrap; text-transform: uppercase; }
+    .activity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-content: stretch; }
+    .activity-grid.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .activity-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.035);
+      opacity: 0;
+      transform: translateY(20px) scale(.96);
+      transition:
+        opacity .42s ease calc(var(--item) * 55ms + 90ms),
+        transform .52s cubic-bezier(.2,.8,.25,1) calc(var(--item) * 55ms + 90ms),
+        border-color .2s ease,
+        background .2s ease;
+    }
+    .leisure-panel.is-active .activity-card { opacity: 1; transform: none; }
+    .activity-card:hover { border-color: rgba(242,200,75,.68); background: rgba(242,200,75,.08); }
+    .activity-icon { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(242,200,75,.5); color: var(--sun); }
+    .activity-icon svg { width: 21px; height: 21px; stroke-width: 1.6; }
+    .activity-card span:last-child { max-width: 150px; font-size: 12px; font-weight: 600; line-height: 1.4; }
     .leisure-list { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); }
-    .leisure-group { flex: 1; padding: 28px 30px; border-bottom: 1px solid var(--line); }
+    .leisure-group {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      padding: 28px 30px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--body);
+      text-align: left;
+      cursor: pointer;
+      transition: background .25s ease, color .25s ease;
+    }
+    .leisure-group::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--sun); transform: scaleY(0); transform-origin: bottom; transition: transform .28s cubic-bezier(.2,.8,.25,1); }
+    .leisure-group:hover, .leisure-group.is-active, .leisure-group:focus-visible { background: var(--deep-pine); color: var(--white); }
+    .leisure-group:hover::before, .leisure-group.is-active::before, .leisure-group:focus-visible::before { transform: scaleY(1); }
     .leisure-group:last-child { border-bottom: 0; }
-    .leisure-group header { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 13px; }
-    .leisure-group h3 { margin: 0; font-family: var(--display); font-size: 22px; font-weight: 650; letter-spacing: -.04em; }
-    .leisure-group svg { width: 22px; height: 22px; color: var(--pine); }
-    .leisure-group p { margin: 0; color: #596964; font-size: 13px; line-height: 1.62; }
+    .leisure-group-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 13px; }
+    .leisure-group-title { font-family: var(--display); font-size: 22px; font-weight: 650; letter-spacing: -.04em; }
+    .leisure-group svg { width: 22px; height: 22px; color: var(--pine); transition: color .25s ease, transform .35s cubic-bezier(.2,.8,.25,1); }
+    .leisure-group:hover svg, .leisure-group.is-active svg, .leisure-group:focus-visible svg { color: var(--sun); transform: rotate(-8deg) scale(1.08); }
+    .leisure-group-description { display: block; color: #596964; font-size: 13px; line-height: 1.62; transition: color .25s ease; }
+    .leisure-group:hover .leisure-group-description, .leisure-group.is-active .leisure-group-description, .leisure-group:focus-visible .leisure-group-description { color: rgba(255,255,255,.66); }
 
     .infrastructure { padding: clamp(92px, 10vw, 144px) 0; background-color: var(--deep-pine); color: var(--white); background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px); background-size: 48px 48px; }
     .infra-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(50px, 8vw, 120px); align-items: start; }
@@ -473,6 +551,8 @@
       .leisure-head, .gallery-head { align-items: flex-start; flex-direction: column; }
       .leisure-stage { grid-template-columns: 1fr; }
       .leisure-visual { min-height: 530px; }
+      .leisure-panel { padding: 34px; }
+      .activity-card { padding: 17px; }
       .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 440px 280px 280px; }
       .gallery-shot:first-child { grid-column: 1 / 3; grid-row: auto; }
       .gallery-shot:nth-child(2) { grid-column: 1 / 3; }
@@ -502,7 +582,13 @@
       .location-meta { grid-template-columns: 1fr; }
       .location-meta div + div { padding-left: 0; border-left: 0; }
       .map-wrap { height: 390px; }
-      .leisure-visual { min-height: 420px; }
+      .leisure-visual { min-height: 560px; }
+      .leisure-panel { gap: 22px; padding: 24px; }
+      .leisure-panel-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .activity-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .activity-card { gap: 12px; padding: 14px; }
+      .activity-icon { width: 36px; height: 36px; }
+      .activity-card span:last-child { font-size: 10.5px; }
       .leisure-group { padding: 24px 22px; }
       .infra-item { grid-template-columns: 40px 1fr; gap: 14px; }
       .gallery-grid { display: flex; flex-direction: column; }
@@ -639,26 +725,84 @@
       </div>
       <div class="leisure-stage reveal">
         <div class="leisure-visual">
-          <image-slot id="lazer-piscina" shape="rect" src="uploads/piscina.jpeg" placeholder="Piscinas do loteamento"></image-slot>
-          <span class="leisure-visual-caption">Perspectiva das piscinas · ilustração artística</span>
+          <div class="leisure-photo">
+            <image-slot id="lazer-piscina" shape="rect" src="uploads/piscina.jpeg" placeholder="Piscinas do loteamento"></image-slot>
+            <span class="leisure-visual-caption">Perspectiva das piscinas · ilustração artística</span>
+          </div>
+
+          <div class="leisure-panel" id="panel-water" data-panel="water" role="region" aria-label="Atividades de água e natureza" aria-hidden="true">
+            <div class="leisure-panel-head">
+              <div><span class="leisure-panel-kicker">Explore a categoria</span><h3>Água e natureza</h3></div>
+              <span class="leisure-panel-count">4 atividades</span>
+            </div>
+            <div class="activity-grid compact">
+              <div class="activity-card" style="--item:0"><span class="activity-icon"><i data-lucide="waves" aria-hidden="true"></i></span><span>Piscinas adulto e infantil</span></div>
+              <div class="activity-card" style="--item:1"><span class="activity-icon"><i data-lucide="fish" aria-hidden="true"></i></span><span>Lago para pesca</span></div>
+              <div class="activity-card" style="--item:2"><span class="activity-icon"><i data-lucide="apple" aria-hidden="true"></i></span><span>Pomar</span></div>
+              <div class="activity-card" style="--item:3"><span class="activity-icon"><i data-lucide="trees" aria-hidden="true"></i></span><span>Praças arborizadas</span></div>
+            </div>
+          </div>
+
+          <div class="leisure-panel" id="panel-movement" data-panel="movement" role="region" aria-label="Atividades de movimento" aria-hidden="true">
+            <div class="leisure-panel-head">
+              <div><span class="leisure-panel-kicker">Explore a categoria</span><h3>Movimento</h3></div>
+              <span class="leisure-panel-count">6 atividades</span>
+            </div>
+            <div class="activity-grid">
+              <div class="activity-card" style="--item:0"><span class="activity-icon"><i data-lucide="sun" aria-hidden="true"></i></span><span>Beach tennis</span></div>
+              <div class="activity-card" style="--item:1"><span class="activity-icon"><i data-lucide="volleyball" aria-hidden="true"></i></span><span>Vôlei de areia</span></div>
+              <div class="activity-card" style="--item:2"><span class="activity-icon"><i data-lucide="goal" aria-hidden="true"></i></span><span>Campo de futebol</span></div>
+              <div class="activity-card" style="--item:3"><span class="activity-icon"><i data-lucide="circle-dot" aria-hidden="true"></i></span><span>Quadra de basquete</span></div>
+              <div class="activity-card" style="--item:4"><span class="activity-icon"><i data-lucide="footprints" aria-hidden="true"></i></span><span>Pista de caminhada</span></div>
+              <div class="activity-card" style="--item:5"><span class="activity-icon"><i data-lucide="dumbbell" aria-hidden="true"></i></span><span>Academia externa</span></div>
+            </div>
+          </div>
+
+          <div class="leisure-panel" id="panel-meeting" data-panel="meeting" role="region" aria-label="Atividades de encontro" aria-hidden="true">
+            <div class="leisure-panel-head">
+              <div><span class="leisure-panel-kicker">Explore a categoria</span><h3>Encontro</h3></div>
+              <span class="leisure-panel-count">5 atividades</span>
+            </div>
+            <div class="activity-grid">
+              <div class="activity-card" style="--item:0"><span class="activity-icon"><i data-lucide="party-popper" aria-hidden="true"></i></span><span>Salão de festas</span></div>
+              <div class="activity-card" style="--item:1"><span class="activity-icon"><i data-lucide="utensils-crossed" aria-hidden="true"></i></span><span>Espaço gourmet</span></div>
+              <div class="activity-card" style="--item:2"><span class="activity-icon"><i data-lucide="flame" aria-hidden="true"></i></span><span>Churrasqueiras</span></div>
+              <div class="activity-card" style="--item:3"><span class="activity-icon"><i data-lucide="tent" aria-hidden="true"></i></span><span>Quiosques</span></div>
+              <div class="activity-card" style="--item:4"><span class="activity-icon"><i data-lucide="users" aria-hidden="true"></i></span><span>Praça de convivência</span></div>
+            </div>
+          </div>
+
+          <div class="leisure-panel" id="panel-everyday" data-panel="everyday" role="region" aria-label="Atividades para todo dia" aria-hidden="true">
+            <div class="leisure-panel-head">
+              <div><span class="leisure-panel-kicker">Explore a categoria</span><h3>Todo dia</h3></div>
+              <span class="leisure-panel-count">5 atividades</span>
+            </div>
+            <div class="activity-grid">
+              <div class="activity-card" style="--item:0"><span class="activity-icon"><i data-lucide="briefcase" aria-hidden="true"></i></span><span>Coworking</span></div>
+              <div class="activity-card" style="--item:1"><span class="activity-icon"><i data-lucide="toy-brick" aria-hidden="true"></i></span><span>Brinquedoteca</span></div>
+              <div class="activity-card" style="--item:2"><span class="activity-icon"><i data-lucide="activity" aria-hidden="true"></i></span><span>Pilates</span></div>
+              <div class="activity-card" style="--item:3"><span class="activity-icon"><i data-lucide="flower-2" aria-hidden="true"></i></span><span>Espaço mulher</span></div>
+              <div class="activity-card" style="--item:4"><span class="activity-icon"><i data-lucide="ferris-wheel" aria-hidden="true"></i></span><span>Playground</span></div>
+            </div>
+          </div>
         </div>
         <div class="leisure-list">
-          <article class="leisure-group">
-            <header><h3>Água e natureza</h3><i data-lucide="waves" aria-hidden="true"></i></header>
-            <p>Piscinas adulto e infantil, lago para pesca, pomar e praças arborizadas.</p>
-          </article>
-          <article class="leisure-group">
-            <header><h3>Movimento</h3><i data-lucide="activity" aria-hidden="true"></i></header>
-            <p>Beach tennis, vôlei de areia, futebol, basquete, caminhada e academia externa.</p>
-          </article>
-          <article class="leisure-group">
-            <header><h3>Encontro</h3><i data-lucide="users" aria-hidden="true"></i></header>
-            <p>Salão de festas, espaço gourmet, churrasqueiras, quiosques e praça de convivência.</p>
-          </article>
-          <article class="leisure-group">
-            <header><h3>Todo dia</h3><i data-lucide="home" aria-hidden="true"></i></header>
-            <p>Coworking, brinquedoteca, pilates, espaço mulher e playground.</p>
-          </article>
+          <button class="leisure-group" type="button" data-leisure="water" aria-controls="panel-water" aria-expanded="false">
+            <span class="leisure-group-top"><span class="leisure-group-title">Água e natureza</span><i data-lucide="waves" aria-hidden="true"></i></span>
+            <span class="leisure-group-description">Piscinas adulto e infantil, lago para pesca, pomar e praças arborizadas.</span>
+          </button>
+          <button class="leisure-group" type="button" data-leisure="movement" aria-controls="panel-movement" aria-expanded="false">
+            <span class="leisure-group-top"><span class="leisure-group-title">Movimento</span><i data-lucide="activity" aria-hidden="true"></i></span>
+            <span class="leisure-group-description">Beach tennis, vôlei de areia, futebol, basquete, caminhada e academia externa.</span>
+          </button>
+          <button class="leisure-group" type="button" data-leisure="meeting" aria-controls="panel-meeting" aria-expanded="false">
+            <span class="leisure-group-top"><span class="leisure-group-title">Encontro</span><i data-lucide="users" aria-hidden="true"></i></span>
+            <span class="leisure-group-description">Salão de festas, espaço gourmet, churrasqueiras, quiosques e praça de convivência.</span>
+          </button>
+          <button class="leisure-group" type="button" data-leisure="everyday" aria-controls="panel-everyday" aria-expanded="false">
+            <span class="leisure-group-top"><span class="leisure-group-title">Todo dia</span><i data-lucide="home" aria-hidden="true"></i></span>
+            <span class="leisure-group-description">Coworking, brinquedoteca, pilates, espaço mulher e playground.</span>
+          </button>
         </div>
       </div>
     </div>
@@ -783,6 +927,7 @@ class Component extends DCLogic {
     if (window.lucide) window.lucide.createIcons();
     this.setupReveal();
     this.setupMenu();
+    this.setupLeisure();
   }
 
   componentDidUpdate() {
@@ -828,11 +973,82 @@ class Component extends DCLogic {
     this._menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', this._closeMenu));
   }
 
+  setupLeisure() {
+    this._leisureStage = document.querySelector('.leisure-stage');
+    this._leisureVisual = document.querySelector('.leisure-visual');
+    this._leisureGroups = Array.from(document.querySelectorAll('.leisure-group'));
+    this._leisurePanels = Array.from(document.querySelectorAll('.leisure-panel'));
+    if (!this._leisureStage || !this._leisureVisual || !this._leisureGroups.length) return;
+
+    this._leisureHandlers = [];
+    const listen = (element, event, handler) => {
+      element.addEventListener(event, handler);
+      this._leisureHandlers.push([element, event, handler]);
+    };
+
+    this._activateLeisure = (key) => {
+      this._leisureVisual.classList.add('is-active');
+      this._leisureGroups.forEach((group) => {
+        const active = group.dataset.leisure === key;
+        group.classList.toggle('is-active', active);
+        group.setAttribute('aria-expanded', String(active));
+      });
+      this._leisurePanels.forEach((panel) => {
+        const active = panel.dataset.panel === key;
+        panel.classList.toggle('is-active', active);
+        panel.setAttribute('aria-hidden', String(!active));
+      });
+    };
+
+    this._resetLeisure = () => {
+      this._leisureVisual.classList.remove('is-active');
+      this._leisureGroups.forEach((group) => {
+        group.classList.remove('is-active');
+        group.setAttribute('aria-expanded', 'false');
+      });
+      this._leisurePanels.forEach((panel) => {
+        panel.classList.remove('is-active');
+        panel.setAttribute('aria-hidden', 'true');
+      });
+    };
+
+    this._leisureGroups.forEach((group) => {
+      const activate = () => this._activateLeisure(group.dataset.leisure);
+      const activateFromTap = () => {
+        activate();
+        if (window.matchMedia('(hover: none)').matches) {
+          const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+          window.setTimeout(() => {
+            const root = document.querySelector('#dc-root');
+            if (!root) return;
+            const visualTop = this._leisureVisual.getBoundingClientRect().top - root.getBoundingClientRect().top;
+            root.scrollTo({ top: root.scrollTop + visualTop - 20, behavior });
+          }, 30);
+        }
+      };
+      listen(group, 'mouseenter', activate);
+      listen(group, 'focus', activate);
+      listen(group, 'click', activateFromTap);
+    });
+
+    listen(this._leisureStage, 'mouseleave', this._resetLeisure);
+    listen(this._leisureStage, 'focusout', (event) => {
+      if (!this._leisureStage.contains(event.relatedTarget)) this._resetLeisure();
+    });
+    listen(this._leisureStage, 'keydown', (event) => {
+      if (event.key === 'Escape') {
+        this._resetLeisure();
+        event.target.blur();
+      }
+    });
+  }
+
   componentWillUnmount() {
     if (this._observer) this._observer.disconnect();
     if (this._revealRetry) window.clearTimeout(this._revealRetry);
     if (this._menuButton && this._toggleMenu) this._menuButton.removeEventListener('click', this._toggleMenu);
     if (this._menu && this._closeMenu) this._menu.querySelectorAll('a').forEach((link) => link.removeEventListener('click', this._closeMenu));
+    if (this._leisureHandlers) this._leisureHandlers.forEach(([element, event, handler]) => element.removeEventListener(event, handler));
   }
 }
 </script>
