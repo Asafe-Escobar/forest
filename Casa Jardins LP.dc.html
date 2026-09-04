@@ -68,11 +68,8 @@
         display: grid !important;
         grid-template-columns: repeat(2, minmax(120px, 1fr)) !important;
       }
-      .cj-gallery-track {
-        grid-template-columns: 1fr !important;
-      }
-      .cj-gallery-track > div {
-        min-height: 200px !important;
+      .cj-gallery-grid {
+        column-count: 2 !important;
       }
     }
     @media (max-width: 560px) {
@@ -121,8 +118,8 @@
         padding-left: 16px !important;
         padding-right: 16px !important;
       }
-      .cj-gallery-track > div {
-        min-height: 160px !important;
+      .cj-gallery-grid {
+        column-count: 1 !important;
       }
       .cj-lazer-grid {
         grid-template-columns: 1fr !important;
@@ -267,32 +264,12 @@
   <div class="cj-reveal" style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;">
     <h2 style="font-family:'Lora',serif;color:#cbab74;font-size:clamp(24px,3.4vw,38px);font-weight:500;line-height:1.22;text-align:center;margin:0;">Vislumbre a Vida no Loteamento Colinas do Sol:</h2>
     <p style="color:#dfe6d8;font-size:clamp(14px,1.6vw,16px);font-weight:300;line-height:1.6;text-align:center;max-width:640px;margin:16px 0 0;">Onde cada detalhe foi pensado para oferecer uma experiência de moradia única e que proporcione bem-estar.</p>
-    <div style="width:100%;background:#0f2015;border:1px solid rgba(203,171,116,.22);border-radius:12px;padding:clamp(18px,2.6vw,28px);margin-top:clamp(32px,4vw,48px);">
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:clamp(20px,3vw,30px);">
-        <sc-for list="{{ galTabs }}" as="t" hint-placeholder-count="3">
-          <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
-        </sc-for>
-      </div>
-      <div style="display:flex;align-items:center;gap:clamp(6px,1.5vw,14px);">
-        <button onClick="{{ galPrev }}" aria-label="Anterior" style="flex:none;width:36px;height:36px;border:none;background:transparent;color:#cbab74;cursor:pointer;display:flex;align-items:center;justify-content:center;">
-          <i data-lucide="chevron-left" style="width:26px;height:26px;"></i>
-        </button>
-        <div class="cj-gallery-track" style="flex:1;display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:clamp(10px,1.6vw,18px);align-items:center;">
-          <sc-for list="{{ galImgs }}" as="g" hint-placeholder-count="3">
-            <div style="{{ g.wrapStyle }}">
-              <image-slot id="{{ g.slot }}" shape="rect" src="{{ g.src }}" placeholder="Foto"></image-slot>
-            </div>
-          </sc-for>
+    <div class="cj-gallery-grid" style="width:100%;column-count:3;column-gap:16px;margin-top:clamp(32px,4vw,48px);">
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8">
+        <div style="break-inside:avoid;margin-bottom:16px;border-radius:10px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.3);aspect-ratio:{{ g.ratio }};">
+          <image-slot id="{{ g.slot }}" shape="rect" src="{{ g.src }}" placeholder="Foto"></image-slot>
         </div>
-        <button onClick="{{ galNext }}" aria-label="Próxima" style="flex:none;width:36px;height:36px;border:none;background:transparent;color:#cbab74;cursor:pointer;display:flex;align-items:center;justify-content:center;">
-          <i data-lucide="chevron-right" style="width:26px;height:26px;"></i>
-        </button>
-      </div>
-      <div style="display:flex;justify-content:center;gap:8px;margin-top:20px;">
-        <sc-for list="{{ galDots }}" as="d" hint-placeholder-count="6">
-          <button onClick="{{ d.onClick }}" aria-label="Ir para foto" style="{{ d.style }}"></button>
-        </sc-for>
-      </div>
+      </sc-for>
     </div>
   </div>
 </section>
@@ -347,7 +324,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { galTab: 0, galStart: 0 };
+  state = {};
   renderVals() {
     const lazer = [
       { icon: 'waves', text: 'Piscina adulto e infantil' },
@@ -378,39 +355,18 @@ class Component extends DCLogic {
       { icon: 'route', text: 'Ruas pavimentadas e arborizadas.' },
       { icon: 'shield-check', text: 'Guarita com segurança 24 horas.' }
     ];
-    const galData = [
-      { label: 'Galeria', imgs: ['uploads/IMG_4507.JPG.jpeg', 'uploads/IMG_4508.JPG.jpeg', 'uploads/IMG_4509.JPG.jpeg', 'uploads/WhatsApp Image 2026-08-26 at 10.44.05.jpeg'] },
-      { label: 'Infraestrutura', imgs: ['uploads/IMG_4517.JPG.jpeg', 'uploads/IMG_4518.JPG (1).jpeg', 'uploads/WhatsApp Image 2026-08-26 at 10.44.06.jpeg'] },
-      { label: 'Plantas', imgs: ['uploads/WhatsApp Image 2026-08-26 at 10.44.06 (1).jpeg', 'uploads/WhatsApp Image 2026-08-26 at 10.44.05.jpeg', 'uploads/IMG_4509.JPG.jpeg'] }
+    const gallery = [
+      { slot: 'cj-gal-0', src: 'uploads/IMG_4507.JPG.jpeg', ratio: '1280/765' },
+      { slot: 'cj-gal-1', src: 'uploads/WhatsApp Image 2026-08-26 at 10.44.05.jpeg', ratio: '768/1376' },
+      { slot: 'cj-gal-2', src: 'uploads/IMG_4508.JPG.jpeg', ratio: '1280/765' },
+      { slot: 'cj-gal-3', src: 'uploads/IMG_4517.JPG.jpeg', ratio: '1254/1254' },
+      { slot: 'cj-gal-4', src: 'uploads/WhatsApp Image 2026-08-26 at 10.44.06 (1).jpeg', ratio: '1280/800' },
+      { slot: 'cj-gal-5', src: 'uploads/IMG_4509.JPG.jpeg', ratio: '1170/790' },
+      { slot: 'cj-gal-6', src: 'uploads/IMG_4518.JPG (1).jpeg', ratio: '960/1280' },
+      { slot: 'cj-gal-7', src: 'uploads/WhatsApp Image 2026-08-26 at 10.44.06.jpeg', ratio: '1250/1250' }
     ];
-    const gt = this.state.galTab;
-    const imgs = galData[gt].imgs;
-    const gs = this.state.galStart % imgs.length;
-    const tabBase = { fontFamily: "'Jost',sans-serif", fontSize: 'clamp(11px,1.5vw,13px)', fontWeight: 500, letterSpacing: '.08em', textTransform: 'uppercase', padding: '13px clamp(18px,3vw,34px)', borderRadius: '6px', cursor: 'pointer', transition: 'background-color .2s ease,color .2s ease' };
-    const galTabs = galData.map((d, i) => ({
-      label: d.label,
-      onClick: () => this.setState({ galTab: i, galStart: 0 }),
-      style: i === gt
-        ? { ...tabBase, background: '#cbab74', color: '#12241a', border: '1px solid #cbab74' }
-        : { ...tabBase, background: 'transparent', color: '#f3ecdd', border: '1px solid rgba(203,171,116,.4)' }
-    }));
-    const galImgs = [0, 1, 2].map((k) => {
-      const idx = (gs + k) % imgs.length;
-      return {
-        slot: 'cj-gal-' + gt + '-' + k,
-        src: imgs[idx],
-        wrapStyle: { borderRadius: '10px', overflow: 'hidden', aspectRatio: k === 1 ? '4/3' : '3/4', boxShadow: k === 1 ? '0 18px 40px rgba(0,0,0,.4)' : 'none', opacity: k === 1 ? 1 : .82 }
-      };
-    });
-    const dotBase = { width: '8px', height: '8px', padding: 0, border: 'none', borderRadius: '999px', cursor: 'pointer', transition: 'background-color .2s ease' };
-    const galDots = imgs.map((_, i) => ({
-      onClick: () => this.setState({ galStart: i }),
-      style: { ...dotBase, background: i === gs ? '#cbab74' : 'rgba(203,171,116,.3)' }
-    }));
     return {
-      galTabs, galImgs, galDots,
-      galPrev: () => this.setState(s => ({ galStart: (s.galStart - 1 + imgs.length) % imgs.length })),
-      galNext: () => this.setState(s => ({ galStart: (s.galStart + 1) % imgs.length })),
+      gallery,
       specs,
       lazer
     };
